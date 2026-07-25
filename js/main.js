@@ -5,6 +5,24 @@ async function includePartial(targetId, url) {
   target.innerHTML = await res.text();
 }
 
+// The header/footer partials are shared across pages that live at different
+// folder depths (e.g. index.html vs services/why-us/index.html), so a single
+// hardcoded relative path can't be correct for all of them. Instead, derive
+// the "path back to the site root" from how this very script was loaded —
+// whatever relative prefix got main.js here is the same prefix every other
+// site-root-relative link/asset on this page needs.
+function getBasePrefix() {
+  const script = document.querySelector('script[src$="js/main.js"]');
+  const src = script ? script.getAttribute("src") : "js/main.js";
+  return src.slice(0, src.length - "js/main.js".length);
+}
+
+function applyDataHrefs(prefix) {
+  document.querySelectorAll("[data-href]").forEach((el) => {
+    el.setAttribute("href", prefix + el.dataset.href);
+  });
+}
+
 function markActiveNavLink() {
   const current = document.body.dataset.page;
   if (!current) return;
@@ -104,10 +122,12 @@ function setupCounters() {
 }
 
 async function initLayout() {
+  const prefix = getBasePrefix();
   await Promise.all([
-    includePartial("site-header", "/partials/header.html"),
-    includePartial("site-footer", "/partials/footer.html"),
+    includePartial("site-header", `${prefix}partials/header.html`),
+    includePartial("site-footer", `${prefix}partials/footer.html`),
   ]);
+  applyDataHrefs(prefix);
   markActiveNavLink();
   setFooterYear();
   setupNavToggle();

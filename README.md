@@ -60,15 +60,24 @@ file (reusing the shared `css/style.css` classes — `.hero`/`.hero__copy`/`.her
 `.eyebrow`/`.lede`, etc.), and close the issue when done.
 
 To keep the site easy to scale page by page:
-- Link between pages with **root-relative** paths (e.g. `href="/about.html"`,
-  `href="/services/why-us/"`), not bare relative ones. This project has pages nested at
-  different depths (`services/why-us/index.html` is two levels deep; `about.html` is at
-  the root), and a shared `partials/header.html`/`footer.html` used by all of them — a
-  relative link or asset path is only correct from one specific depth, so it breaks the
-  moment it's reused elsewhere. Root-relative paths work identically regardless of which
-  page includes them. This assumes the site deploys at its domain's root; if it ever
-  moves to a subpath (e.g. a GitHub Pages project site at `user.github.io/repo/`), every
-  root-relative path would need a prefix — flag that explicitly before deploying there.
+- Link between pages with **plain relative paths counted from that file's own location**
+  (e.g. `about.html` from the root, `../about.html` from `services/index.html`,
+  `../../about.html` from `services/why-us/index.html`), and give each page's own
+  `<link rel="stylesheet">`/`<script src>` tags the same treatment. Do **not** use
+  root-relative paths (a leading `/`) — this site is deployed as a GitHub Pages
+  *project* site (`https://<user>.github.io/magnrey-website/`), not at its domain root,
+  so a leading `/` resolves to the wrong place and silently breaks the page (this exact
+  bug shipped once — see git history). Plain relative paths work correctly regardless of
+  whether the site ends up at a domain root, a subpath, or a custom domain later.
+- The one exception is `partials/header.html`/`footer.html`, since that single shared
+  file is injected into pages at multiple different folder depths and can't hardcode a
+  relative path that's correct for all of them. Its internal nav links use a
+  `data-href="path/from/site/root"` attribute (no leading slash) instead of a real
+  `href`; `js/main.js` derives the correct relative prefix at runtime from how it loaded
+  itself (see `getBasePrefix()`/`applyDataHrefs()`) and rewrites them after injecting the
+  partial. Follow this same `data-href` pattern if the shared header/footer ever need a
+  new internal link.
 - Keep all styling in `css/style.css` — avoid inline `style="..."` attributes; add a new
   rule or utility class instead.
-- Put images in `images/` and reference them as `/images/photo.jpg`.
+- Put images in `images/` and reference them the same relative way, e.g. `images/photo.jpg`
+  from the root or `../images/photo.jpg` from one level deep.
