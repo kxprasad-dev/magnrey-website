@@ -6,6 +6,69 @@
   <title>Magnrey — How We Deliver Success</title>
   <meta name="description" content="Magnrey's delivery methodology, success metrics, and outcomes.">
   <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* Page-scoped layout for the 5-step process timeline below —
+       css/style.css intentionally left untouched, per request. Reuses
+       existing classes (.eyebrow, .lede) for text treatments; these
+       rules only add the phase-row structure, which has no existing
+       equivalent component. */
+    .phases {
+      display: flex;
+      flex-direction: column;
+      margin-top: var(--space-xl);
+    }
+    .phase {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .phase:last-child {
+      border-bottom: none;
+    }
+    .phase__left {
+      flex: 0 0 320px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .phase__icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      color: var(--primary-color);
+    }
+    .phase__num {
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: var(--fs-h2);
+      font-weight: var(--fw-bold);
+      color: rgba(15, 23, 42, 0.15);
+      min-width: 2ch;
+    }
+    .phase__title {
+      margin: 0 0 0.2rem;
+    }
+    .phase__category {
+      margin: 0;
+      font-size: var(--fs-caption);
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+    .phase__body {
+      flex: 1 1 400px;
+      margin: 0;
+    }
+  </style>
 </head>
 <body data-page="services-how-we-deliver-success">
   <div id="site-header"></div>
@@ -13,16 +76,80 @@
   <main>
     <section class="section">
       <div class="container">
-        <p class="eyebrow">Scaffold — tracked in <a href="https://github.com/kxprasad-dev/magnrey-website/issues/9">#9</a></p>
-        <h1>How We Deliver Success</h1>
-        <p class="lede">This page is scaffolded and ready to be built out. It should cover:</p>
-        <div class="card">
-          <div class="card__accent"></div>
-          <ul>
-            <li>Delivery process / methodology steps</li>
-            <li>Success metrics and outcomes</li>
-            <li>Case examples of delivered value</li>
-          </ul>
+        <p class="eyebrow">How We Deliver Success</p>
+        <h1>The Immersion-to-Evolve Framework</h1>
+        <p class="lede">Our delivery model is built on Co-Design and Co-Delivery. We don't deliver to you; we build with you.</p>
+
+        <div class="phases">
+          <div class="phase">
+            <div class="phase__left">
+              <div class="phase__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              </div>
+              <span class="phase__num">01</span>
+              <div>
+                <h3 class="phase__title">The Immersion</h3>
+                <p class="phase__category">Strategic Alignment &amp; Risk Scan</p>
+              </div>
+            </div>
+            <p class="phase__body">We begin with a precision intelligence scan to anchor technical potential in organisational reality. We establish a "North Star" supported by strict ethical, privacy, and compliance guardrails, audit data readiness for agentic deployment, and isolate high-velocity opportunities to deliver rapid, measurable ROI.</p>
+          </div>
+
+          <div class="phase">
+            <div class="phase__left">
+              <div class="phase__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+              </div>
+              <span class="phase__num">02</span>
+              <div>
+                <h3 class="phase__title">The Blueprint</h3>
+                <p class="phase__category">Operating Model Engineering</p>
+              </div>
+            </div>
+            <p class="phase__body">We architect a future-state operating model designed for seamless human-AI collaboration. By deconstructing legacy processes, we identify high-impact transitions to agentic workflows and deliver a Target Operating Model (TOM) that elevates the People Function to a driver of enterprise-wide strategic intelligence.</p>
+          </div>
+
+          <div class="phase">
+            <div class="phase__left">
+              <div class="phase__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg>
+              </div>
+              <span class="phase__num">03</span>
+              <div>
+                <h3 class="phase__title">The Sequence</h3>
+                <p class="phase__category">Roadmap &amp; Capability Strategy</p>
+              </div>
+            </div>
+            <p class="phase__body">We prioritise AI "Value Drops" against technical dependencies to ensure a balanced delivery of immediate gains and long-term infrastructure hardening. We synchronise the technical build with a workforce upskilling strategy, bridging capability gaps to ensure human evolution matches technical velocity.</p>
+          </div>
+
+          <div class="phase">
+            <div class="phase__left">
+              <div class="phase__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="14 6 21 6 21 13"/></svg>
+              </div>
+              <span class="phase__num">04</span>
+              <div>
+                <h3 class="phase__title">The Build &amp; Deploy</h3>
+                <p class="phase__category">Disciplined Execution &amp; Readiness</p>
+              </div>
+            </div>
+            <p class="phase__body">We lead the agile integration of AI capabilities and the configuration of digital ecosystems, governed by a rigorous focus on risks, dependencies, and business outcomes. Parallel to the technical build, we execute a comprehensive deployment strategy including organisational readiness, transition support, and hands-on capability building.</p>
+          </div>
+
+          <div class="phase">
+            <div class="phase__left">
+              <div class="phase__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 8 12 10 6 14 18 16 12 21 12"/></svg>
+              </div>
+              <span class="phase__num">05</span>
+              <div>
+                <h3 class="phase__title">The Evolve &amp; Pulse</h3>
+                <p class="phase__category">Value Realisation &amp; Performance</p>
+              </div>
+            </div>
+            <p class="phase__body">We transition the engagement into a cycle of continuous performance optimisation and cultural alignment. We implement feedback loops for AI refinement and system health, measuring outcomes against diagnostic benchmarks to track ongoing ROI and secure the long-term elevation of the People Function.</p>
+          </div>
         </div>
       </div>
     </section>
