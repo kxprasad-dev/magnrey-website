@@ -1,12 +1,33 @@
 <nav class="nav">
-  <a href="index.html" class="nav__brand">Magnrey</a>
-  <div class="nav__links">
-    <a href="index.html" data-nav="home">Home</a>
-    <a href="services.html" data-nav="services">Services</a>
-    <a href="case-studies.html" data-nav="case-studies">Case Studies</a>
-    <a href="about.html" data-nav="about">About Us</a>
-    <a href="insights.html" data-nav="insights">Insights</a>
-    <a href="contact.html" data-nav="contact">Contact</a>
-  </div>
-  <a href="contact.html" class="nav__cta">Start a Conversation</a>
+  <a href="/" class="nav__brand">Magnrey</a>
+
+  <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav__links" id="nav-links">
+    <li><a href="/" data-nav="home">Home</a></li>
+    <li class="nav__item nav__item--dropdown">
+      <div class="nav__item-row">
+        <a href="/services/" class="nav__link" data-nav="services">Services</a>
+        <button type="button" class="nav__dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="services-submenu" aria-label="Toggle Services submenu">
+          <svg viewBox="0 0 12 8" width="10" height="7" fill="none" aria-hidden="true">
+            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <ul class="nav__dropdown-menu" id="services-submenu">
+        <li><a href="/services/why-us/" data-nav="services-why-us">Why Us</a></li>
+        <li><a href="/services/what-we-do/" data-nav="services-what-we-do">What We Do</a></li>
+        <li><a href="/services/how-we-deliver-success/" data-nav="services-how-we-deliver-success">How We Deliver Success</a></li>
+      </ul>
+    </li>
+    <li><a href="/case-studies.html" data-nav="case-studies">Case Studies</a></li>
+    <li><a href="/about.html" data-nav="about">About Us</a></li>
+    <li><a href="/insights.html" data-nav="insights">Insights</a></li>
+    <li><a href="/contact.html" data-nav="contact">Contact</a></li>
+    <li class="nav__mobile-cta-item"><a href="/contact.html" class="nav__mobile-cta">Start a Conversation</a></li>
+  </ul>
+
+  <a href="/contact.html" class="nav__cta">Start a Conversation</a>
 </nav>
