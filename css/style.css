@@ -18,6 +18,24 @@
   /* Typography */
   --font-primary: Cambria, Georgia, serif;
 
+  /* Type scale — every size on the site pulls from this list. Do not
+     introduce one-off font-size values elsewhere in this file or in
+     page markup; extend this scale instead if a new size is genuinely
+     needed. */
+  --fs-caption: 0.75rem;   /* 12px — footer notes, page numbers */
+  --fs-eyebrow: 0.8rem;    /* 13px — small caps / eyebrow labels */
+  --fs-small: 0.85rem;     /* 14px — nav links, descriptions, buttons */
+  --fs-body: 1rem;         /* 16px — paragraph text */
+  --fs-lede: 1.1rem;       /* 18px — intro / lede paragraph */
+  --fs-h3: 1.15rem;        /* 18px — card / list-item titles */
+  --fs-h2: 1.5rem;         /* 24px — section headings */
+  --fs-stat: 2.5rem;       /* 40px — large callout numbers */
+  --fs-h1: 2.75rem;        /* 44px — page/hero headline */
+
+  /* Two weights only — Cambria does not have a usable range beyond these */
+  --fw-regular: 400;
+  --fw-bold: 700;
+
   /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -41,14 +59,35 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: var(--font-primary);
+}
+
 body {
   margin: 0;
   font-family: var(--font-primary);
   background: var(--bg-light);
   color: var(--text-main);
   line-height: 1.7;
-  font-size: 16px;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Browsers do NOT inherit font-family into form controls or buttons by
+   default — they fall back to the OS system font. This is the #1 cause
+   of a page looking like it has "too many fonts" when really only one
+   was ever declared. Force inheritance everywhere it matters. */
+button,
+input,
+select,
+textarea,
+a,
+.btn,
+.nav__links a,
+.nav__brand,
+.nav__cta {
+  font-family: inherit;
 }
 
 a {
@@ -66,31 +105,35 @@ img {
 }
 
 /* ==========================================================================
-   Typography
+   Typography — only these rules should ever set font-size or font-weight.
+   Everything else in this file reuses the classes/tags below rather than
+   declaring its own size, so the whole site stays on one consistent scale.
    ========================================================================== */
 
 h1, h2, h3, h4 {
   font-family: var(--font-primary);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--primary-color);
   line-height: 1.25;
   margin: 0 0 var(--space-sm);
+  letter-spacing: normal;
 }
 
-h1 { font-size: 2.4rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.15rem; }
-h4 { font-size: 1rem; }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-body); }
 
 p {
   margin: 0 0 var(--space-sm);
-  font-size: 1rem;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
   color: var(--text-main);
 }
 
 .eyebrow {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-bold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent-color);
@@ -98,9 +141,16 @@ p {
 }
 
 .lede {
-  font-size: 1.1rem;
+  font-size: var(--fs-lede);
+  font-weight: var(--fw-regular);
   color: var(--text-main);
   max-width: 42ch;
+}
+
+.caption {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -134,8 +184,8 @@ p {
 }
 
 .nav__brand {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
   color: var(--primary-color);
 }
 
@@ -146,7 +196,8 @@ p {
 }
 
 .nav__links a {
-  font-size: 0.85rem;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
   color: var(--text-main);
 }
 
@@ -155,8 +206,8 @@ p {
   background: var(--primary-color);
   padding: 0.55rem 1.1rem;
   border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
 }
 
 /* ==========================================================================
@@ -177,7 +228,6 @@ p {
 }
 
 .hero__copy h1 {
-  font-size: 2.75rem;
   margin-bottom: var(--space-sm);
 }
 
@@ -198,8 +248,8 @@ p {
 }
 
 .hero__panel .stat {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: var(--fs-stat);
+  font-weight: var(--fw-bold);
   color: var(--accent-light);
   line-height: 1;
   margin: 0;
@@ -207,7 +257,8 @@ p {
 
 .hero__panel .stat-label {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
   max-width: 22ch;
   margin-top: var(--space-xs);
 }
@@ -219,8 +270,8 @@ p {
 .btn {
   display: inline-block;
   font-family: var(--font-primary);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
   padding: 0.7rem 1.4rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -273,20 +324,22 @@ p {
 }
 
 .list-item__index {
-  font-size: 1.3rem;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-regular);
   color: var(--primary-color);
   margin-bottom: var(--space-xs);
 }
 
 .list-item__title {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
   color: var(--primary-color);
   margin-bottom: var(--space-xs);
 }
 
 .list-item__desc {
-  font-size: 0.85rem;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
   color: var(--text-main);
 }
 
@@ -313,6 +366,7 @@ p {
   padding: 0.25rem 0 0.25rem var(--space-sm);
   margin: var(--space-md) 0;
   font-style: italic;
+  font-size: var(--fs-body);
   color: var(--primary-color);
 }
 
@@ -327,7 +381,8 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
 }
 
 /* ==========================================================================
@@ -352,14 +407,15 @@ p {
 
 .memo__confidential {
   color: var(--accent-color);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-bold);
 }
 
 .memo__footer {
   text-align: right;
   color: var(--text-muted);
-  font-size: 0.75rem;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
   margin-top: var(--space-lg);
 }
 
