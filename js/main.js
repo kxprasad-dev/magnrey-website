@@ -8,18 +8,8 @@ async function includePartial(targetId, url) {
 function markActiveNavLink() {
   const current = document.body.dataset.page;
   if (!current) return;
-  document.querySelectorAll(`.nav-list a[data-nav="${current}"]`).forEach((link) => {
+  document.querySelectorAll(`.nav__links a[data-nav="${current}"]`).forEach((link) => {
     link.setAttribute("aria-current", "page");
-  });
-}
-
-function setupNavToggle() {
-  const toggle = document.querySelector(".nav-toggle");
-  const navList = document.querySelector(".nav-list");
-  if (!toggle || !navList) return;
-  toggle.addEventListener("click", () => {
-    const isOpen = navList.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
   });
 }
 
@@ -34,7 +24,6 @@ async function initLayout() {
     includePartial("site-footer", "partials/footer.html"),
   ]);
   markActiveNavLink();
-  setupNavToggle();
   setFooterYear();
 }
 
