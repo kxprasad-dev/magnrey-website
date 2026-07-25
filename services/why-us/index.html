@@ -53,6 +53,26 @@
         transform: rotate(90deg);
       }
     }
+
+    /* Outcome cards: dark slate fill, teal-highlight text — same tokens
+       already used for dark surfaces elsewhere (--primary-color,
+       --accent-light), just applied as a page-scoped modifier. */
+    .feature--dark {
+      background: var(--primary-color);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .feature--dark .feature__title,
+    .feature--dark .feature__desc {
+      color: var(--accent-light);
+    }
+    .feature--dark .feature__icon {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: var(--accent-light);
+    }
+    .feature--dark:hover {
+      border-color: rgba(94, 234, 212, 0.4);
+    }
   </style>
 </head>
 <body data-page="services-why-us">
@@ -111,21 +131,21 @@
 
           <div class="why-col">
             <p class="eyebrow">Outcome</p>
-            <div class="feature">
+            <div class="feature feature--dark">
               <div class="feature__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
               </div>
               <h3 class="feature__title">Premium People Experience</h3>
               <p class="feature__desc">Always-on, personalised experiences that retain critical talent and lift eNPS at enterprise scale.</p>
             </div>
-            <div class="feature">
+            <div class="feature feature--dark">
               <div class="feature__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 8 12 10 6 14 18 16 12 21 12"/></svg>
               </div>
               <h3 class="feature__title">Efficiency &amp; Effectiveness</h3>
               <p class="feature__desc">Reduced operational cost, zero-touch transactions and a People team freed for high-value strategic work.</p>
             </div>
-            <div class="feature">
+            <div class="feature feature--dark">
               <div class="feature__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V6l7-3z"/></svg>
               </div>
