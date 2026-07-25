@@ -13,20 +13,26 @@
        rules only add the split dark-header/light-body card structure,
        which has no existing equivalent component. */
     .svc-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto 1fr auto;
       gap: var(--space-md);
       margin-top: var(--space-xl);
     }
     .svc-card {
-      flex: 1 1 300px;
-      display: flex;
-      flex-direction: column;
+      grid-row: span 3;
+      display: grid;
+      grid-template-rows: subgrid;
       background: var(--bg-white);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-sm);
+    }
+    @media (max-width: 768px) {
+      .svc-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .svc-card__top {
       background: var(--primary-color);
@@ -51,7 +57,6 @@
     }
     .svc-card__body {
       padding: var(--space-md);
-      flex: 1;
     }
     .svc-card__body p {
       margin: 0;
