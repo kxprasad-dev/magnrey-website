@@ -292,6 +292,12 @@ p {
   position: relative;
 }
 
+.hero__stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
 .hero__panel .stat {
   font-size: var(--fs-stat);
   font-weight: var(--fw-bold);
