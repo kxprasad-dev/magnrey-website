@@ -6,23 +6,259 @@
   <title>Magnrey — Case Studies</title>
   <meta name="description" content="Proof of Magnrey's past work, client success stories, and hard data.">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Page-scoped: the horizontal scrolling case study strip has no
+       existing equivalent component. css/style.css intentionally left
+       untouched — .eyebrow/.container/tokens are reused as-is; these
+       rules only add the new track/card/scrollbar structure. */
+    .cs-hero {
+      padding-bottom: var(--space-md);
+    }
+    .cs-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 7vw, 4.25rem);
+      font-weight: var(--fw-bold);
+      line-height: 1.05;
+      color: var(--primary-color);
+      margin: var(--space-xs) 0 0;
+    }
+
+    .cs-scroll {
+      background: linear-gradient(160deg, #1c3a5e 0%, #0a1424 100%);
+      padding: var(--space-xl) 0;
+    }
+    .cs-scroll .eyebrow {
+      color: var(--accent-light);
+    }
+    .cs-scroll__heading {
+      font-family: var(--font-display);
+      color: var(--bg-white);
+      margin: 0 0 var(--space-lg);
+    }
+
+    .cs-scroll__track {
+      display: flex;
+      gap: var(--space-md);
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      padding-bottom: var(--space-md);
+      scrollbar-width: auto;
+      scrollbar-color: var(--accent-light) rgba(255, 255, 255, 0.12);
+    }
+    .cs-scroll__track::-webkit-scrollbar {
+      height: 10px;
+    }
+    .cs-scroll__track::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+    }
+    .cs-scroll__track::-webkit-scrollbar-thumb {
+      background: var(--accent-light);
+      border-radius: var(--radius-sm);
+    }
+
+    .cs-card {
+      flex: 0 0 calc((100% - 2 * var(--space-md)) / 3);
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      padding-right: var(--space-md);
+      border-right: 1px dashed rgba(255, 255, 255, 0.25);
+    }
+    .cs-card:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+    .cs-card__title {
+      font-family: var(--font-display);
+      font-size: var(--fs-h3);
+      font-weight: var(--fw-bold);
+      color: var(--bg-white);
+      margin: 0 0 var(--space-sm);
+    }
+    .cs-card__media {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: var(--space-sm);
+    }
+    .cs-card__media svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .cs-card__highlight {
+      font-weight: var(--fw-bold);
+      color: var(--bg-white);
+      margin: 0 0 var(--space-xs);
+    }
+    .cs-card__desc {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: var(--fs-small);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .cs-card__more {
+      display: inline-block;
+      margin-left: 0.3em;
+      color: var(--accent-light);
+      font-weight: var(--fw-bold);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .cs-card__more:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .cs-card {
+        flex-basis: calc((100% - var(--space-md)) / 2);
+      }
+    }
+    @media (max-width: 640px) {
+      .cs-card {
+        flex-basis: 85%;
+      }
+    }
+  </style>
 </head>
 <body data-page="case-studies">
   <div id="site-header"></div>
 
   <main>
-    <section class="section">
+    <section class="section cs-hero">
       <div class="container">
-        <p class="eyebrow">Scaffold — tracked in <a href="https://github.com/kxprasad-dev/magnrey-website/issues/3">#3</a></p>
-        <h1>Case Studies</h1>
-        <p class="lede">This page is scaffolded and ready to be built out. It should cover:</p>
-        <div class="card">
-          <div class="card__accent"></div>
-          <ul>
-            <li>Proof of past work</li>
-            <li>Client success stories</li>
-            <li>Hard data / metrics</li>
-          </ul>
+        <p class="eyebrow">Case Studies</p>
+        <h1 class="cs-hero__title">Success. Delivered.</h1>
+      </div>
+    </section>
+
+    <section class="cs-scroll">
+      <div class="container">
+        <p class="eyebrow">Selected Engagements</p>
+        <h2 class="cs-scroll__heading">Five results, in the clients' own numbers</h2>
+
+        <div class="cs-scroll__track">
+          <article class="cs-card">
+            <h3 class="cs-card__title">Regulatory Challenge</h3>
+            <div class="cs-card__media">
+              <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+                <defs>
+                  <linearGradient id="csGrad1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#134e4a"/>
+                    <stop offset="1" stop-color="#0a1424"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="300" fill="url(#csGrad1)"/>
+                <circle cx="200" cy="150" r="70" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <path d="M200 95l45 18v40c0 35-22 55-45 62-23-7-45-27-45-62v-40l45-18z" fill="none" stroke="#5eead4" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M178 152l16 16 30-32" fill="none" stroke="#5eead4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="cs-card__highlight">Zero audit findings across 15 jurisdictions</p>
+            <p class="cs-card__desc">A global financial services firm needed to harmonise HR compliance across fifteen regulatory regimes without slowing quarterly hiring targets. We embedded governance directly into the operating model.<a href="#" class="cs-card__more">More &#9660;</a></p>
+          </article>
+
+          <article class="cs-card">
+            <h3 class="cs-card__title">Legacy System Migration</h3>
+            <div class="cs-card__media">
+              <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+                <defs>
+                  <linearGradient id="csGrad2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#0f766e"/>
+                    <stop offset="1" stop-color="#0a1424"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="300" fill="url(#csGrad2)"/>
+                <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <rect x="115" y="115" width="70" height="70" rx="8" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+                <rect x="215" y="115" width="70" height="70" rx="8" fill="none" stroke="#5eead4" stroke-width="2.2"/>
+                <path d="M190 150h30m0 0l-10-10m10 10l-10 10" fill="none" stroke="#5eead4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="cs-card__highlight">40% faster time-to-hire post-migration</p>
+            <p class="cs-card__desc">A manufacturing group was running payroll and recruiting on three disconnected legacy systems. We led a phased Workday migration with zero disruption to live hiring cycles.<a href="#" class="cs-card__more">More &#9660;</a></p>
+          </article>
+
+          <article class="cs-card">
+            <h3 class="cs-card__title">Workforce Analytics at Scale</h3>
+            <div class="cs-card__media">
+              <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+                <defs>
+                  <linearGradient id="csGrad3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#134e4a"/>
+                    <stop offset="1" stop-color="#0a1424"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="300" fill="url(#csGrad3)"/>
+                <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <g stroke="#5eead4" stroke-width="2.2" stroke-linecap="round">
+                  <line x1="140" y1="195" x2="140" y2="150" stroke="rgba(255,255,255,0.35)"/>
+                  <line x1="175" y1="195" x2="175" y2="120"/>
+                  <line x1="210" y1="195" x2="210" y2="160" stroke="rgba(255,255,255,0.35)"/>
+                  <line x1="245" y1="195" x2="245" y2="105"/>
+                  <line x1="280" y1="195" x2="280" y2="140" stroke="rgba(255,255,255,0.35)"/>
+                </g>
+                <line x1="120" y1="195" x2="300" y2="195" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+              </svg>
+            </div>
+            <p class="cs-card__highlight">1.2M employee records unified into one source of truth</p>
+            <p class="cs-card__desc">A multinational retailer's people data was fragmented across regional HRIS instances. We consolidated it into a single analytics layer, live for leadership within one quarter.<a href="#" class="cs-card__more">More &#9660;</a></p>
+          </article>
+
+          <article class="cs-card">
+            <h3 class="cs-card__title">AI Adoption Roadmap</h3>
+            <div class="cs-card__media">
+              <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+                <defs>
+                  <linearGradient id="csGrad4" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#0f766e"/>
+                    <stop offset="1" stop-color="#0a1424"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="300" fill="url(#csGrad4)"/>
+                <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <g stroke="rgba(255,255,255,0.35)" stroke-width="1.4">
+                  <line x1="200" y1="150" x2="150" y2="115"/>
+                  <line x1="200" y1="150" x2="250" y2="115"/>
+                  <line x1="200" y1="150" x2="150" y2="185"/>
+                  <line x1="200" y1="150" x2="250" y2="185"/>
+                </g>
+                <circle cx="200" cy="150" r="10" fill="#5eead4"/>
+                <circle cx="150" cy="115" r="6" fill="#5eead4"/>
+                <circle cx="250" cy="115" r="6" fill="#5eead4"/>
+                <circle cx="150" cy="185" r="6" fill="#5eead4"/>
+                <circle cx="250" cy="185" r="6" fill="#5eead4"/>
+              </svg>
+            </div>
+            <p class="cs-card__highlight">70% of manual HR transactions automated in 9 months</p>
+            <p class="cs-card__desc">A logistics enterprise wanted AI-native operations without disrupting frontline service levels. We phased in agentic workflows against a disciplined, risk-scored roadmap.<a href="#" class="cs-card__more">More &#9660;</a></p>
+          </article>
+
+          <article class="cs-card">
+            <h3 class="cs-card__title">Talent Retention Turnaround</h3>
+            <div class="cs-card__media">
+              <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+                <defs>
+                  <linearGradient id="csGrad5" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#134e4a"/>
+                    <stop offset="1" stop-color="#0a1424"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="300" fill="url(#csGrad5)"/>
+                <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <polyline points="130,190 175,165 210,180 250,130 290,105" fill="none" stroke="#5eead4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="130" cy="190" r="4.5" fill="#5eead4"/>
+                <circle cx="175" cy="165" r="4.5" fill="#5eead4"/>
+                <circle cx="210" cy="180" r="4.5" fill="#5eead4"/>
+                <circle cx="250" cy="130" r="4.5" fill="#5eead4"/>
+                <circle cx="290" cy="105" r="4.5" fill="#5eead4"/>
+              </svg>
+            </div>
+            <p class="cs-card__highlight">eNPS lifted 28 points in one year</p>
+            <p class="cs-card__desc">A professional services firm was losing senior talent faster than it could backfill. A redesigned People experience turned attrition into its strongest retention story yet.<a href="#" class="cs-card__more">More &#9660;</a></p>
+          </article>
         </div>
       </div>
     </section>
