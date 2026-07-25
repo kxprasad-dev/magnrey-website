@@ -6,6 +6,68 @@
   <title>Magnrey — What We Do</title>
   <meta name="description" content="A detailed breakdown of Magnrey's service offerings and methodology.">
   <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* Page-scoped layout for the 3-column service cards below —
+       css/style.css intentionally left untouched, per request. Reuses
+       existing classes (.eyebrow, .lede) for text treatments; these
+       rules only add the split dark-header/light-body card structure,
+       which has no existing equivalent component. */
+    .svc-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+    .svc-card {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .svc-card__top {
+      background: var(--primary-color);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .svc-card__icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      color: var(--accent-light);
+    }
+    .svc-card__title {
+      color: var(--bg-white);
+      margin: 0;
+    }
+    .svc-card__body {
+      padding: var(--space-md);
+      flex: 1;
+    }
+    .svc-card__body p {
+      margin: 0;
+    }
+    .svc-card__footer {
+      padding: var(--space-md);
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-light);
+    }
+    .svc-card__footer .eyebrow {
+      margin-bottom: var(--space-xs);
+    }
+    .svc-card__footer p:last-child {
+      margin: 0;
+    }
+  </style>
 </head>
 <body data-page="services-what-we-do">
   <div id="site-header"></div>
@@ -13,16 +75,58 @@
   <main>
     <section class="section">
       <div class="container">
-        <p class="eyebrow">Scaffold — tracked in <a href="https://github.com/kxprasad-dev/magnrey-website/issues/8">#8</a></p>
-        <h1>What We Do</h1>
-        <p class="lede">This page is scaffolded and ready to be built out. It should cover:</p>
-        <div class="card">
-          <div class="card__accent"></div>
-          <ul>
-            <li>Detailed breakdown of service offerings</li>
-            <li>Methodology specifics</li>
-            <li>Example engagement scope</li>
-          </ul>
+        <p class="eyebrow">What We Do</p>
+        <h1>Core Service Pillars</h1>
+        <p class="lede">Three integrated capabilities designed to deliver AI-native transformation from strategy through to operational reality.</p>
+
+        <div class="svc-grid">
+          <div class="svc-card">
+            <div class="svc-card__top">
+              <div class="svc-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+              </div>
+              <h3 class="svc-card__title">AI &amp; Digital Advisory</h3>
+            </div>
+            <div class="svc-card__body">
+              <p>We formulate AI-native strategies, select high-performance technology stacks, and orchestrate partner ecosystems to drive scalable enterprise growth — accelerating digital maturity through structured roadmaps and platform modernisation.</p>
+            </div>
+            <div class="svc-card__footer">
+              <p class="eyebrow">Strategic Alignment</p>
+              <p>Leading with AI ROI supported by long-term Digital architecture — ensuring technology is a competitive differentiator, not a cost centre.</p>
+            </div>
+          </div>
+
+          <div class="svc-card">
+            <div class="svc-card__top">
+              <div class="svc-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+              </div>
+              <h3 class="svc-card__title">Project Advisory</h3>
+            </div>
+            <div class="svc-card__body">
+              <p>We engineer future-state operating models, optimise functional processes, and direct large-scale digital transformations — acting as the strategic anchor for all internal and external stakeholders throughout delivery.</p>
+            </div>
+            <div class="svc-card__footer">
+              <p class="eyebrow">Collaborative Delivery</p>
+              <p>Fusing your internal expertise with our transformation experience, orchestrating all service providers into a unified, successful delivery ecosystem.</p>
+            </div>
+          </div>
+
+          <div class="svc-card">
+            <div class="svc-card__top">
+              <div class="svc-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <h3 class="svc-card__title">Systems Implementation</h3>
+            </div>
+            <div class="svc-card__body">
+              <p>We execute end-to-end HR platform deployments — including Workday, Dayforce, Rippling and Deel — establishing a high-integrity data core across the employee lifecycle with global operational stability and seamless transitions.</p>
+            </div>
+            <div class="svc-card__footer">
+              <p class="eyebrow">Core Digital Infrastructure</p>
+              <p>Building the robust, scalable Digital foundation required for AI scalability and operational stability across complex regulatory environments.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
