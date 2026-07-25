@@ -6,6 +6,54 @@
   <title>Magnrey — Why Us</title>
   <meta name="description" content="What sets Magnrey apart from other consulting firms.">
   <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    /* Page-scoped layout for the banner + pillar/outcome grid below —
+       css/style.css intentionally left untouched, per request. Reuses
+       existing classes (.callout, .lede, .feature, .eyebrow) for all
+       visual styling; these rules only handle arrangement. */
+    .why-banner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+    .why-banner > .callout,
+    .why-banner > .lede {
+      flex: 1 1 320px;
+      margin: 0;
+      max-width: none;
+    }
+
+    .why-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+    .why-col {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .why-arrow {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .why-arrow {
+        flex-basis: 100%;
+        padding: var(--space-sm) 0;
+      }
+      .why-arrow svg {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
 </head>
 <body data-page="services-why-us">
   <div id="site-header"></div>
@@ -13,16 +61,78 @@
   <main>
     <section class="section">
       <div class="container">
-        <p class="eyebrow">Scaffold — tracked in <a href="https://github.com/kxprasad-dev/magnrey-website/issues/7">#7</a></p>
-        <h1>Why Us</h1>
-        <p class="lede">This page is scaffolded and ready to be built out. It should cover:</p>
-        <div class="card">
-          <div class="card__accent"></div>
-          <ul>
-            <li>What differentiates Magnrey from other consulting firms</li>
-            <li>Track record / credibility signals</li>
-            <li>Client testimonials or trust markers</li>
-          </ul>
+        <p class="eyebrow">The Strategic Case</p>
+        <h1>Why Magnrey</h1>
+
+        <div class="why-banner">
+          <blockquote class="callout">
+            After decades leading global HR transformations, we saw the same problem
+            repeatedly: organisations investing in AI and Digital without the
+            practitioner depth to make it stick.
+          </blockquote>
+          <p class="lede">
+            We founded Magnrey to bridge that gap. The People Function has historically
+            operated as an administrative cost centre — AI treated as a disconnected
+            experiment, Digital platforms as static systems of record. We change that.
+          </p>
+        </div>
+
+        <div class="why-layout">
+          <div class="why-col">
+            <p class="eyebrow">Pillar</p>
+            <div class="feature">
+              <div class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 14.9 8.6 22 9.3 16.5 14.1 18.2 21 12 17.3 5.8 21 7.5 14.1 2 9.3 9.1 8.6 12 2"/></svg>
+              </div>
+              <h3 class="feature__title">AI-First Transformation</h3>
+              <p class="feature__desc">Redesigning work and workforce around AI-native architecture to elevate the People Function from cost centre to value engine.</p>
+            </div>
+            <div class="feature">
+              <div class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+              </div>
+              <h3 class="feature__title">Disciplined Execution</h3>
+              <p class="feature__desc">A rigorous six-stage framework that turns AI deployment and Digital infrastructure into verifiable business outcomes.</p>
+            </div>
+            <div class="feature">
+              <div class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+              </div>
+              <h3 class="feature__title">Proven Experience</h3>
+              <p class="feature__desc">Former executives. 20+ years. 15+ countries. Peer-to-peer engagement at senior leadership level from day one.</p>
+            </div>
+          </div>
+
+          <div class="why-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 60" width="24" height="60" fill="none">
+              <path d="M4 4l14 26-14 26" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="why-col">
+            <p class="eyebrow">Outcome</p>
+            <div class="feature">
+              <div class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <h3 class="feature__title">Premium People Experience</h3>
+              <p class="feature__desc">Always-on, personalised experiences that retain critical talent and lift eNPS at enterprise scale.</p>
+            </div>
+            <div class="feature">
+              <div class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 8 12 10 6 14 18 16 12 21 12"/></svg>
+              </div>
+              <h3 class="feature__title">Efficiency &amp; Effectiveness</h3>
+              <p class="feature__desc">Reduced operational cost, zero-touch transactions and a People team freed for high-value strategic work.</p>
+            </div>
+            <div class="feature">
+              <div class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V6l7-3z"/></svg>
+              </div>
+              <h3 class="feature__title">Compliance by Design</h3>
+              <p class="feature__desc">Regulatory standards embedded into governance — zero audit findings, verified adherence across all jurisdictions.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
