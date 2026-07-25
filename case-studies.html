@@ -9,22 +9,13 @@
   <style>
     /* Page-scoped: the horizontal scrolling case study strip has no
        existing equivalent component. css/style.css intentionally left
-       untouched — .eyebrow/.container/tokens are reused as-is; these
-       rules only add the new track/card/scrollbar structure. */
-    .cs-hero {
-      padding-bottom: var(--space-md);
-    }
-    .cs-hero__title {
-      font-family: var(--font-display);
-      font-size: clamp(2.75rem, 7vw, 4.25rem);
-      font-weight: var(--fw-bold);
-      line-height: 1.05;
-      color: var(--primary-color);
-      margin: var(--space-xs) 0 0;
-    }
-
+       untouched — .hero/.eyebrow/.container/tokens (the same ones Home
+       and Services use) are reused as-is; these rules only add the new
+       track/card/scrollbar structure, styled with the site's existing
+       dark-surface treatment (--primary-color + translucent-white chips)
+       rather than a one-off palette. */
     .cs-scroll {
-      background: linear-gradient(160deg, #1c3a5e 0%, #0a1424 100%);
+      background: var(--primary-color);
       padding: var(--space-xl) 0;
     }
     .cs-scroll .eyebrow {
@@ -81,6 +72,8 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       margin-bottom: var(--space-sm);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
     .cs-card__media svg {
       display: block;
@@ -126,10 +119,23 @@
   <div id="site-header"></div>
 
   <main>
-    <section class="section cs-hero">
-      <div class="container">
+    <section class="hero">
+      <div class="hero__copy">
         <p class="eyebrow">Case Studies</p>
-        <h1 class="cs-hero__title">Success. Delivered.</h1>
+        <h1>Success.<br><em>Delivered.</em></h1>
+        <p class="lede">Five engagements, five outcomes — proof of what disciplined AI and Digital transformation delivers when it's led by practitioners, not theorists.</p>
+        <div class="hero__actions">
+          <a href="services/" class="btn btn--ghost">Explore Services</a>
+          <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+        </div>
+      </div>
+      <div class="hero__panel">
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <p class="stat">100%</p>
+            <p class="stat-label">of the engagements profiled here delivered against their stated targets.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -143,13 +149,6 @@
             <h3 class="cs-card__title">Regulatory Challenge</h3>
             <div class="cs-card__media">
               <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-                <defs>
-                  <linearGradient id="csGrad1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#134e4a"/>
-                    <stop offset="1" stop-color="#0a1424"/>
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="300" fill="url(#csGrad1)"/>
                 <circle cx="200" cy="150" r="70" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
                 <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
                 <path d="M200 95l45 18v40c0 35-22 55-45 62-23-7-45-27-45-62v-40l45-18z" fill="none" stroke="#5eead4" stroke-width="2.2" stroke-linejoin="round"/>
@@ -164,13 +163,6 @@
             <h3 class="cs-card__title">Legacy System Migration</h3>
             <div class="cs-card__media">
               <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-                <defs>
-                  <linearGradient id="csGrad2" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#0f766e"/>
-                    <stop offset="1" stop-color="#0a1424"/>
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="300" fill="url(#csGrad2)"/>
                 <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
                 <rect x="115" y="115" width="70" height="70" rx="8" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
                 <rect x="215" y="115" width="70" height="70" rx="8" fill="none" stroke="#5eead4" stroke-width="2.2"/>
@@ -185,13 +177,6 @@
             <h3 class="cs-card__title">Workforce Analytics at Scale</h3>
             <div class="cs-card__media">
               <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-                <defs>
-                  <linearGradient id="csGrad3" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#134e4a"/>
-                    <stop offset="1" stop-color="#0a1424"/>
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="300" fill="url(#csGrad3)"/>
                 <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
                 <g stroke="#5eead4" stroke-width="2.2" stroke-linecap="round">
                   <line x1="140" y1="195" x2="140" y2="150" stroke="rgba(255,255,255,0.35)"/>
@@ -211,13 +196,6 @@
             <h3 class="cs-card__title">AI Adoption Roadmap</h3>
             <div class="cs-card__media">
               <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-                <defs>
-                  <linearGradient id="csGrad4" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#0f766e"/>
-                    <stop offset="1" stop-color="#0a1424"/>
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="300" fill="url(#csGrad4)"/>
                 <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
                 <g stroke="rgba(255,255,255,0.35)" stroke-width="1.4">
                   <line x1="200" y1="150" x2="150" y2="115"/>
@@ -240,13 +218,6 @@
             <h3 class="cs-card__title">Talent Retention Turnaround</h3>
             <div class="cs-card__media">
               <svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-                <defs>
-                  <linearGradient id="csGrad5" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#134e4a"/>
-                    <stop offset="1" stop-color="#0a1424"/>
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="300" fill="url(#csGrad5)"/>
                 <circle cx="200" cy="150" r="105" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
                 <polyline points="130,190 175,165 210,180 250,130 290,105" fill="none" stroke="#5eead4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle cx="130" cy="190" r="4.5" fill="#5eead4"/>
