@@ -1,10 +1,10 @@
 /* ==========================================================================
    Boutique Advisory — Brand Stylesheet
    Palette: dark slate / teal accent / off-white / charcoal
-   Typography: DM Sans (Google Font)
+   Typography: Cormorant Garamond (display) + DM Sans (body/UI)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   /* Colour palette */
@@ -15,10 +15,11 @@
   --bg-white: #ffffff;        /* Pure white, for cards */
   --text-main: #334155;       /* Charcoal body text */
   --text-muted: #94a3b8;      /* Muted text on dark backgrounds */
-  --border-color: #e2e8f0;    /* Hairline border on light backgrounds */
+  --border-color: rgba(15, 23, 42, 0.08); /* Hairline border — composites on both light and white surfaces */
 
   /* Typography */
-  --font-primary: 'DM Sans', sans-serif;
+  --font-primary: 'DM Sans', sans-serif;                  /* body, UI, chrome */
+  --font-display: 'Cormorant Garamond', Georgia, serif;   /* headings, wordmark, numerals */
 
   /* Type scale — every size on the site pulls from this list. Do not
      introduce one-off font-size values elsewhere in this file or in
@@ -29,13 +30,15 @@
   --fs-small: 0.85rem;     /* 14px — nav links, descriptions, buttons */
   --fs-body: 1rem;         /* 16px — paragraph text */
   --fs-lede: 1.1rem;       /* 18px — intro / lede paragraph */
-  --fs-h3: 1.15rem;        /* 18px — card / list-item titles */
-  --fs-h2: 1.5rem;         /* 24px — section headings */
-  --fs-stat: 2.5rem;       /* 40px — large callout numbers */
-  --fs-h1: 2.75rem;        /* 44px — page/hero headline */
+  --fs-h3: 1.25rem;        /* 20px — card / list-item titles (serif) */
+  --fs-h2: 1.75rem;        /* 28px — section headings (serif) */
+  --fs-stat: 3rem;         /* 48px — large callout numbers (serif) */
+  --fs-h1: clamp(2.5rem, 6vw, 3.25rem); /* page/hero headline (serif) */
 
-  /* Two weights only — Cambria does not have a usable range beyond these */
+  /* DM Sans (body/UI) uses regular/bold. Cormorant Garamond (display)
+     uses its own weight — 700 reads too heavy at display sizes. */
   --fw-regular: 400;
+  --fw-display: 600;
   --fw-bold: 700;
 
   /* Spacing */
@@ -49,6 +52,14 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+
+  /* Elevation — two-layer: tight contact shadow + soft ambient spread.
+     Always navy-tinted, never neutral black, to match this palette. */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 2px 4px rgba(15, 23, 42, 0.05), 0 12px 24px -6px rgba(15, 23, 42, 0.10);
+
+  /* Shared timing for every hover transition */
+  --transition: 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ==========================================================================
@@ -113,10 +124,10 @@ img {
    ========================================================================== */
 
 h1, h2, h3, h4 {
-  font-family: var(--font-primary);
-  font-weight: var(--fw-bold);
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
   color: var(--primary-color);
-  line-height: 1.25;
+  line-height: 1.2;
   margin: 0 0 var(--space-sm);
   letter-spacing: normal;
 }
@@ -213,7 +224,7 @@ p {
 }
 
 .section--divider {
-  border-top: 0.5px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
 }
 
 /* ==========================================================================
@@ -226,11 +237,13 @@ p {
   justify-content: space-between;
   padding: var(--space-sm) var(--space-lg);
   background: var(--bg-white);
+  box-shadow: 0 1px 0 var(--border-color), var(--shadow-sm);
 }
 
 .nav__brand {
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-bold);
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-display);
   color: var(--primary-color);
 }
 
@@ -253,6 +266,14 @@ p {
   border-radius: var(--radius-sm);
   font-size: var(--fs-small);
   font-weight: var(--fw-bold);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.nav__cta:hover {
+  background: #1e293b;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
@@ -302,8 +323,10 @@ p {
 }
 
 .hero__panel .stat {
+  font-family: var(--font-display);
   font-size: var(--fs-stat);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-display);
+  font-variant-numeric: lining-nums;
   color: var(--accent-light);
   line-height: 1;
   margin: 0;
@@ -331,6 +354,14 @@ p {
   cursor: pointer;
   border: none;
   text-align: center;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), box-shadow var(--transition),
+              transform var(--transition);
+}
+
+.btn--primary,
+.btn--accent {
+  box-shadow: var(--shadow-sm);
 }
 
 .btn--primary {
@@ -340,6 +371,8 @@ p {
 
 .btn--primary:hover {
   background: #1e293b;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .btn--ghost {
@@ -350,9 +383,29 @@ p {
   border-radius: 0;
 }
 
+.btn--ghost:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
 .btn--accent {
   background: var(--accent-color);
   color: var(--bg-white);
+}
+
+.btn--accent:hover {
+  background: #0d6660;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn:disabled,
+.btn:disabled:hover {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: var(--primary-color);
 }
 
 /* ==========================================================================
@@ -366,7 +419,7 @@ p {
 
 .grid-3 > * {
   padding: 0 var(--space-md);
-  border-right: 0.5px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
 }
 
 .grid-3 > *:first-child {
@@ -378,6 +431,7 @@ p {
 }
 
 .list-item__index {
+  font-family: var(--font-display);
   font-size: var(--fs-h2);
   font-weight: var(--fw-regular);
   color: var(--primary-color);
@@ -386,7 +440,7 @@ p {
 
 .list-item__title {
   font-size: var(--fs-h3);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-display);
   color: var(--primary-color);
   margin-bottom: var(--space-xs);
 }
@@ -399,9 +453,10 @@ p {
 
 .card {
   background: var(--bg-white);
-  border: 0.5px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .card__accent {
@@ -423,9 +478,17 @@ p {
 
 .feature {
   background: var(--bg-white);
-  border: 0.5px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.feature:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: rgba(15, 118, 110, 0.25);
 }
 
 .feature__icon {
@@ -435,10 +498,17 @@ p {
   align-items: center;
   justify-content: center;
   background: var(--bg-light);
-  border: 0.5px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   color: var(--primary-color);
   margin-bottom: var(--space-sm);
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.feature:hover .feature__icon {
+  background: var(--bg-white);
+  border-color: rgba(15, 118, 110, 0.3);
+  color: var(--accent-color);
 }
 
 .feature__icon svg {
@@ -448,7 +518,7 @@ p {
 
 .feature__title {
   font-size: var(--fs-h3);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-display);
   color: var(--primary-color);
   margin-bottom: var(--space-xs);
 }
@@ -467,6 +537,7 @@ p {
   border-left: 3px solid var(--accent-color);
   padding: 0.25rem 0 0.25rem var(--space-sm);
   margin: var(--space-md) 0;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: var(--fs-body);
   color: var(--primary-color);
@@ -531,10 +602,31 @@ p {
 .bg-white      { background: var(--bg-white); }
 .mt-lg         { margin-top: var(--space-lg); }
 
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .nav__cta, .feature, .feature__icon {
+    transition: none;
+  }
+  .btn--primary:hover, .btn--accent:hover, .nav__cta:hover, .feature:hover {
+    transform: none;
+  }
+  .pulse-dot, .pulse-dot::before, .pulse-dot::after {
+    animation: none;
+  }
+}
+
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
-  .grid-3 > * { border-right: none; border-bottom: 0.5px solid var(--border-color); padding: var(--space-md) 0; }
+  .grid-3 > * { border-right: none; border-bottom: 1px solid var(--border-color); padding: var(--space-md) 0; }
   .grid-4 { grid-template-columns: 1fr; }
   .nav__links { display: none; }
 }
