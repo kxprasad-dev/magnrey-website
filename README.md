@@ -13,8 +13,8 @@ insights.html        Insights / Blog
 contact.html         Contact
 partials/            Shared header.html and footer.html, injected at runtime by js/main.js
 css/style.css        Shared styles and design tokens
-js/main.js           Loads partials, mobile nav toggle, active-link highlighting
-assets/              Images and other static assets
+js/main.js           Loads partials, active-link highlighting
+images/              Images and other static assets
 ```
 
 No build step. Each page is a standalone `.html` file that shares a common header/footer
@@ -45,5 +45,13 @@ requirements listed on the page itself). Each page has its own tracking issue:
 - [#6 Contact](https://github.com/kxprasad-dev/magnrey-website/issues/6)
 
 Work one page at a time: pick an issue, build out that page's content in its `.html`
-file (reusing the shared `css/style.css` classes — `.hero`, `.grid`/`.card`,
-`.btn`/`.btn-primary`/`.btn-secondary`, `.form-field`, etc.), and close the issue when done.
+file (reusing the shared `css/style.css` classes — `.hero`/`.hero__copy`/`.hero__panel`,
+`.grid-3`/`.list-item__*`, `.card`, `.btn`/`.btn--primary`/`.btn--ghost`/`.btn--accent`,
+`.eyebrow`/`.lede`, etc.), and close the issue when done.
+
+To keep the site easy to scale page by page:
+- Link between pages with relative paths (e.g. `href="about.html"`), so links work the
+  same locally and on GitHub Pages.
+- Keep all styling in `css/style.css` — avoid inline `style="..."` attributes; add a new
+  rule or utility class instead.
+- Put images in `images/` and reference them as `images/photo.jpg`.

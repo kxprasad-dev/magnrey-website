@@ -371,6 +371,7 @@ p {
 .text-muted    { color: var(--text-muted); }
 .bg-dark       { background: var(--primary-color); color: var(--bg-white); }
 .bg-white      { background: var(--bg-white); }
+.mt-lg         { margin-top: var(--space-lg); }
 
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; }
