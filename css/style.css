@@ -196,12 +196,14 @@ p {
 }
 
 .nav__links a {
+  font-family: Georgia, var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-regular);
   color: var(--text-main);
 }
 
 .nav__cta {
+  font-family: Georgia, var(--font-primary);
   color: var(--bg-white) !important;
   background: var(--primary-color);
   padding: 0.55rem 1.1rem;
