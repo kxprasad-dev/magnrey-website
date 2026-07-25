@@ -1,8 +1,10 @@
 /* ==========================================================================
    Boutique Advisory — Brand Stylesheet
    Palette: dark slate / teal accent / off-white / charcoal
-   Typography: Cambria (Office-native, Georgia fallback for non-Windows)
+   Typography: DM Sans (Google Font)
    ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 :root {
   /* Colour palette */
@@ -16,7 +18,7 @@
   --border-color: #e2e8f0;    /* Hairline border on light backgrounds */
 
   /* Typography */
-  --font-primary: Cambria, Georgia, serif;
+  --font-primary: 'DM Sans', sans-serif;
 
   /* Type scale — every size on the site pulls from this list. Do not
      introduce one-off font-size values elsewhere in this file or in
@@ -196,14 +198,12 @@ p {
 }
 
 .nav__links a {
-  font-family: Georgia, var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-regular);
   color: var(--text-main);
 }
 
 .nav__cta {
-  font-family: Georgia, var(--font-primary);
   color: var(--bg-white) !important;
   background: var(--primary-color);
   padding: 0.55rem 1.1rem;
