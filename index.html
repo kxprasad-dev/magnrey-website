@@ -6,6 +6,22 @@
   <title>Magnrey — Home</title>
   <meta name="description" content="Magnrey helps businesses achieve [outcome] through [approach]. Placeholder value proposition — refine in issue #1.">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Decorative background art for the dark hero panel — page-scoped
+       to Home only, css/style.css intentionally left untouched. */
+    .hero-panel-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .hero__stats {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body data-page="home">
   <div id="site-header"></div>
@@ -26,6 +42,24 @@
         </div>
       </div>
       <div class="hero__panel">
+        <svg class="hero-panel-art" viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+          <circle cx="240" cy="240" r="200" stroke="white" stroke-width="0.7"/>
+          <circle cx="240" cy="240" r="140" stroke="white" stroke-width="0.7"/>
+          <circle cx="240" cy="240" r="80" stroke="white" stroke-width="0.7"/>
+          <circle cx="240" cy="240" r="10" fill="white"/>
+          <circle cx="240" cy="40" r="5" fill="white"/>
+          <circle cx="440" cy="240" r="5" fill="white"/>
+          <circle cx="240" cy="440" r="5" fill="white"/>
+          <circle cx="40" cy="240" r="5" fill="white"/>
+          <circle cx="381" cy="99" r="4" fill="white"/>
+          <circle cx="381" cy="381" r="4" fill="white"/>
+          <circle cx="99" cy="381" r="4" fill="white"/>
+          <circle cx="99" cy="99" r="4" fill="white"/>
+          <line x1="240" y1="40" x2="240" y2="240" stroke="white" stroke-width="0.4"/>
+          <line x1="440" y1="240" x2="240" y2="240" stroke="white" stroke-width="0.4"/>
+          <line x1="240" y1="440" x2="240" y2="240" stroke="white" stroke-width="0.4"/>
+          <line x1="40" y1="240" x2="240" y2="240" stroke="white" stroke-width="0.4"/>
+        </svg>
         <div class="hero__stats">
           <div class="hero__stat">
             <p class="stat"><span class="counter" data-target="25">1</span>+</p>
