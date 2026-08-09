@@ -88,17 +88,22 @@
       font-size: var(--fs-small);
       line-height: 1.6;
       margin: 0;
+      max-height: 16em; /* 10 lines at this element's own line-height (1.6) */
+      overflow-y: auto;
+      padding-right: var(--space-xs);
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-color) rgba(15, 23, 42, 0.1);
     }
-    .cs-card__more {
-      display: inline-block;
-      margin-left: 0.3em;
-      color: var(--accent-color);
-      font-weight: var(--fw-bold);
-      text-decoration: none;
-      white-space: nowrap;
+    .cs-card__desc::-webkit-scrollbar {
+      width: 6px;
     }
-    .cs-card__more:hover {
-      text-decoration: underline;
+    .cs-card__desc::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-sm);
+    }
+    .cs-card__desc::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: var(--radius-sm);
     }
 
     @media (max-width: 1024px) {
@@ -154,7 +159,7 @@
               </svg>
             </div>
             <p class="cs-card__highlight">Zero audit findings across 15 jurisdictions</p>
-            <p class="cs-card__desc">A manufacturing group was running payroll and recruiting on three disconnected legacy systems. We led a phased Workday migration with zero disruption to live hiring cycles. A global financial services firm needed to harmonise HR compliance across fifteen regulatory regimes without slowing quarterly hiring targets. We embedded governance directly into the operating model.<a href="#" class="cs-card__more">More &#9660;</a></p>
+            <p class="cs-card__desc">A manufacturing group was running payroll and recruiting on three disconnected legacy systems. We led a phased Workday migration with zero disruption to live hiring cycles. A global financial services firm needed to harmonise HR compliance across fifteen regulatory regimes without slowing quarterly hiring targets. We embedded governance directly into the operating model.</p>
           </article>
 
           <article class="cs-card">
@@ -168,7 +173,7 @@
               </svg>
             </div>
             <p class="cs-card__highlight">40% faster time-to-hire post-migration</p>
-            <p class="cs-card__desc">A manufacturing group was running payroll and recruiting on three disconnected legacy systems. We led a phased Workday migration with zero disruption to live hiring cycles.<a href="#" class="cs-card__more">More &#9660;</a></p>
+            <p class="cs-card__desc">A manufacturing group was running payroll and recruiting on three disconnected legacy systems. We led a phased Workday migration with zero disruption to live hiring cycles.</p>
           </article>
 
           <article class="cs-card">
@@ -187,7 +192,7 @@
               </svg>
             </div>
             <p class="cs-card__highlight">1.2M employee records unified into one source of truth</p>
-            <p class="cs-card__desc">A multinational retailer's people data was fragmented across regional HRIS instances. We consolidated it into a single analytics layer, live for leadership within one quarter.<a href="#" class="cs-card__more">More &#9660;</a></p>
+            <p class="cs-card__desc">A multinational retailer's people data was fragmented across regional HRIS instances. We consolidated it into a single analytics layer, live for leadership within one quarter.</p>
           </article>
 
           <article class="cs-card">
@@ -209,7 +214,7 @@
               </svg>
             </div>
             <p class="cs-card__highlight">70% of manual HR transactions automated in 9 months</p>
-            <p class="cs-card__desc">A logistics enterprise wanted AI-native operations without disrupting frontline service levels. We phased in agentic workflows against a disciplined, risk-scored roadmap.<a href="#" class="cs-card__more">More &#9660;</a></p>
+            <p class="cs-card__desc">A logistics enterprise wanted AI-native operations without disrupting frontline service levels. We phased in agentic workflows against a disciplined, risk-scored roadmap.</p>
           </article>
 
           <article class="cs-card">
@@ -226,7 +231,7 @@
               </svg>
             </div>
             <p class="cs-card__highlight">eNPS lifted 28 points in one year</p>
-            <p class="cs-card__desc">A professional services firm was losing senior talent faster than it could backfill. A redesigned People experience turned attrition into its strongest retention story yet.<a href="#" class="cs-card__more">More &#9660;</a></p>
+            <p class="cs-card__desc">A professional services firm was losing senior talent faster than it could backfill. A redesigned People experience turned attrition into its strongest retention story yet.</p>
           </article>
         </div>
       </div>
