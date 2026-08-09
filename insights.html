@@ -6,29 +6,364 @@
   <title>Magnrey — Insights</title>
   <meta name="description" content="Expert articles, whitepapers, and reports from Magnrey.">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Page-scoped: css/style.css intentionally left untouched. .hero/
+       .card/.btn/.bg-dark/tokens are reused as-is; these rules only add
+       what has no existing equivalent — the subscribe box (reused in both
+       the hero panel and the mid-page banner), the featured-insight
+       callout, the category filter tabs, and the insight card grid. */
+    .subscribe-box {
+      max-width: 360px;
+      text-align: left;
+    }
+    .subscribe-box__title {
+      font-family: var(--font-display);
+      font-size: var(--fs-h3);
+      font-weight: var(--fw-bold);
+      color: var(--primary-color);
+      margin: 0 0 var(--space-xs);
+    }
+    .subscribe-box__desc {
+      color: var(--text-main);
+      font-size: var(--fs-small);
+      margin: 0;
+    }
+    .subscribe-box__form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+    }
+    .subscribe-box__form input,
+    .subscribe-box__form select {
+      flex: 1 1 160px;
+      padding: 0.6em 0.8em;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-primary);
+      font-size: var(--fs-small);
+      color: var(--text-main);
+    }
+    .subscribe-box__form .btn {
+      flex: 1 1 100%;
+    }
+    .subscribe-box__note {
+      font-size: var(--fs-caption);
+      color: var(--text-muted);
+      margin: var(--space-xs) 0 0;
+    }
+    .subscribe-box--banner {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .subscribe-box--banner .subscribe-box__title {
+      color: var(--bg-white);
+    }
+    .subscribe-box--banner .subscribe-box__desc {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .subscribe-box--banner .subscribe-box__form .btn {
+      flex: 1 1 auto;
+    }
+    .subscribe-box--banner .subscribe-box__note {
+      color: rgba(255, 255, 255, 0.55);
+    }
+    /* .btn:disabled's background matches .bg-dark exactly (both
+       var(--primary-color)), so on this dark banner the button would
+       otherwise vanish into its own backdrop. */
+    .subscribe-box--banner .btn:disabled {
+      background: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .tag-badge {
+      display: inline-block;
+      font-size: var(--fs-caption);
+      font-weight: var(--fw-bold);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.3em 0.7em;
+      border-radius: var(--radius-sm);
+      background: rgba(15, 118, 110, 0.1);
+      color: var(--accent-color);
+    }
+
+    .featured-insight {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+      margin-top: var(--space-lg);
+    }
+    .featured-insight .tag-badge {
+      background: var(--accent-color);
+      color: var(--bg-white);
+    }
+    .featured-insight__title {
+      font-family: var(--font-display);
+      font-size: var(--fs-h2);
+      font-weight: var(--fw-bold);
+      color: var(--primary-color);
+      margin: var(--space-xs) 0 0;
+    }
+    .featured-insight__summary {
+      color: var(--text-main);
+      max-width: 70ch;
+      margin: 0;
+    }
+    .featured-insight__meta {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      font-weight: var(--fw-bold);
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin: var(--space-lg) 0;
+    }
+    .filter-tab {
+      font-family: var(--font-primary);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-bold);
+      padding: 0.5em 1.1em;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-white);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-tab:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+    .filter-tab.is-active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--bg-white);
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+    .insight-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .insight-card__title {
+      font-family: var(--font-display);
+      font-size: var(--fs-h3);
+      font-weight: var(--fw-bold);
+      color: var(--primary-color);
+      margin: var(--space-xs) 0 0;
+    }
+    .insight-card__synopsis {
+      color: var(--text-main);
+      font-size: var(--fs-small);
+      line-height: 1.6;
+      margin: 0;
+      flex: 1;
+    }
+    .insight-card__meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--border-color);
+      font-size: var(--fs-caption);
+      color: var(--text-muted);
+    }
+    .insight-card__meta a {
+      color: var(--accent-color);
+      font-weight: var(--fw-bold);
+      text-decoration: none;
+    }
+    .insight-card__meta a:hover {
+      text-decoration: underline;
+    }
+
+    .closing-cta {
+      text-align: center;
+    }
+    .closing-cta h2 {
+      margin-bottom: var(--space-sm);
+    }
+
+    @media (max-width: 768px) {
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+      .subscribe-box {
+        max-width: none;
+      }
+    }
+  </style>
 </head>
 <body data-page="insights">
   <div id="site-header"></div>
 
   <main>
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Insights</p>
+        <h1>Strategic Perspectives</h1>
+        <p class="lede">Practical and Actionable</p>
+      </div>
+      <div class="hero__panel">
+        <div class="card subscribe-box">
+          <p class="subscribe-box__title">Get strategic perspectives delivered to your inbox</p>
+          <p class="subscribe-box__desc">Receive direct notifications when new reports and whitepapers are published.</p>
+          <!-- HubSpot: swap this form for the embed (Portal ID + Form GUID) once available -->
+          <form class="subscribe-box__form" onsubmit="return false;">
+            <input type="email" placeholder="Email address" aria-label="Email address">
+            <select aria-label="Industry (optional)">
+              <option value="" selected>Industry (optional)</option>
+              <option>Technology</option>
+              <option>Financial Services</option>
+              <option>Manufacturing</option>
+              <option>Retail</option>
+              <option>Other</option>
+            </select>
+            <button type="submit" class="btn btn--primary" disabled>Subscribe — connecting soon</button>
+          </form>
+          <p class="subscribe-box__note">Newsletter signup is being connected — check back soon.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
-        <p class="eyebrow">Scaffold — tracked in <a href="https://github.com/kxprasad-dev/magnrey-website/issues/5">#5</a></p>
-        <h1>Insights / Blog</h1>
-        <p class="lede">This page is scaffolded and ready to be built out. It should cover:</p>
-        <div class="card">
-          <div class="card__accent"></div>
-          <ul>
-            <li>Expert articles</li>
-            <li>Whitepapers or reports</li>
-            <li>Content that demonstrates deep industry knowledge</li>
-          </ul>
+        <div class="featured-insight">
+          <span class="tag-badge">Featured Report</span>
+          <h2 class="featured-insight__title">The Agentic HR Operating Model: A Practitioner's Field Guide</h2>
+          <p class="featured-insight__summary">How enterprise HR functions are redesigning operating models around agentic AI without losing operational discipline. Drawn from engagements spanning workforce platforms, global service delivery, and change management.</p>
+          <span class="featured-insight__meta">7 min read</span>
         </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter insights by category">
+          <button type="button" class="filter-tab is-active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-tab" data-filter="articles" aria-pressed="false">Articles &amp; Commentary</button>
+          <button type="button" class="filter-tab" data-filter="frameworks" aria-pressed="false">Frameworks &amp; Toolkits</button>
+          <button type="button" class="filter-tab" data-filter="trends" aria-pressed="false">Industry Trends</button>
+        </div>
+
+        <div class="insight-grid">
+          <article class="card insight-card" data-category="articles">
+            <span class="tag-badge">AI &amp; HR Transformation</span>
+            <h3 class="insight-card__title">Why Agentic AI Changes the HR Operating Model, Not Just the Tools</h3>
+            <p class="insight-card__synopsis">Deploying AI agents into HR workflows fails when it's treated as a tooling upgrade rather than an operating model redesign.</p>
+            <div class="insight-card__meta">
+              <a href="about.html">By Magnrey Strategy Practice</a>
+              <span>6 min read</span>
+            </div>
+          </article>
+
+          <article class="card insight-card" data-category="frameworks">
+            <span class="tag-badge">Operating Model Design</span>
+            <h3 class="insight-card__title">A Practical Framework for Scaling Global Capability Centers</h3>
+            <p class="insight-card__synopsis">A phased model for standing up and scaling GCCs without sacrificing local responsiveness.</p>
+            <div class="insight-card__meta">
+              <a href="about.html">By Magnrey Strategy Practice</a>
+              <span>8 min read</span>
+            </div>
+          </article>
+
+          <article class="card insight-card" data-category="trends">
+            <span class="tag-badge">Workforce Analytics &amp; Data</span>
+            <h3 class="insight-card__title">What 75,000 Employee Records Taught Us About Data Governance</h3>
+            <p class="insight-card__synopsis">Lessons from consolidating fragmented HRIS data into a single analytics layer at enterprise scale.</p>
+            <div class="insight-card__meta">
+              <a href="about.html">By Magnrey Strategy Practice</a>
+              <span>5 min read</span>
+            </div>
+          </article>
+
+          <article class="card insight-card" data-category="articles">
+            <span class="tag-badge">Change Management</span>
+            <h3 class="insight-card__title">Leading Change When "Agentic" Still Feels Abstract to Your Workforce</h3>
+            <p class="insight-card__synopsis">Practical language and sequencing for change programmes introducing agentic AI to skeptical teams.</p>
+            <div class="insight-card__meta">
+              <a href="about.html">By Magnrey Strategy Practice</a>
+              <span>7 min read</span>
+            </div>
+          </article>
+
+          <article class="card insight-card" data-category="frameworks">
+            <span class="tag-badge">AI &amp; HR Transformation</span>
+            <h3 class="insight-card__title">A Risk-Scored Roadmap for AI Adoption in HR</h3>
+            <p class="insight-card__synopsis">How to sequence AI adoption initiatives by risk and readiness rather than hype.</p>
+            <div class="insight-card__meta">
+              <a href="about.html">By Magnrey Strategy Practice</a>
+              <span>6 min read</span>
+            </div>
+          </article>
+
+          <article class="card insight-card" data-category="trends">
+            <span class="tag-badge">Operating Model Design</span>
+            <h3 class="insight-card__title">The Shift From Regional HR Silos to Unified Global Delivery</h3>
+            <p class="insight-card__synopsis">Why more enterprises are consolidating regional HR operations into unified global service delivery models.</p>
+            <div class="insight-card__meta">
+              <a href="about.html">By Magnrey Strategy Practice</a>
+              <span>6 min read</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-dark">
+      <div class="container">
+        <div class="subscribe-box subscribe-box--banner">
+          <p class="subscribe-box__title">Stay Ahead of Industry Shifts</p>
+          <p class="subscribe-box__desc">Join enterprise leaders who rely on Magnrey's analytical commentary. No spam, just high-value strategic takeaways published monthly.</p>
+          <!-- HubSpot: swap this form for the embed (Portal ID + Form GUID) once available -->
+          <form class="subscribe-box__form" onsubmit="return false;">
+            <input type="email" placeholder="Enter email address" aria-label="Email address">
+            <button type="submit" class="btn btn--primary" disabled>Get Automatic Updates — connecting soon</button>
+          </form>
+          <p class="subscribe-box__note">Unsubscribe at any time. We respect your privacy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--divider closing-cta">
+      <div class="container">
+        <h2>Ready to Apply These Insights to Your Organization?</h2>
+        <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
       </div>
     </section>
   </main>
 
   <div id="site-footer"></div>
   <script src="js/main.js" defer></script>
+  <script>
+    // Client-side only: filters the sample insight cards by category.
+    // No backend involved — pure show/hide, matching the site's other
+    // vanilla-JS interactions (nav dropdowns, mobile menu) in js/main.js.
+    document.querySelectorAll(".filter-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        document.querySelectorAll(".filter-tab").forEach(function (t) {
+          t.classList.remove("is-active");
+          t.setAttribute("aria-pressed", "false");
+        });
+        tab.classList.add("is-active");
+        tab.setAttribute("aria-pressed", "true");
+
+        var filter = tab.dataset.filter;
+        document.querySelectorAll(".insight-card").forEach(function (card) {
+          var show = filter === "all" || card.dataset.category === filter;
+          card.style.display = show ? "" : "none";
+        });
+      });
+    });
+  </script>
 </body>
 </html>
