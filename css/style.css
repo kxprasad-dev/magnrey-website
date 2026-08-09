@@ -555,6 +555,44 @@ p {
   color: var(--text-main);
 }
 
+/* ==========================================================================
+   Quick Path — cross-page navigation footer, unnumbered. Distinct from
+   .grid-3/.list-item__* above (which services/index.html's own numbered
+   subpage list still uses): this uses gap-based spacing instead of
+   border-right dividers, so any item count wraps cleanly with no
+   dangling border.
+   ========================================================================== */
+
+.quick-paths {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-lg) var(--space-md);
+}
+
+.quick-path__title {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-display);
+  color: var(--primary-color);
+  margin: 0 0 var(--space-xs);
+}
+
+.quick-path__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.quick-path__title a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.quick-path__desc {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
+  color: var(--text-main);
+  margin: 0;
+}
+
 .card {
   background: var(--bg-white);
   border: 1px solid var(--border-color);
@@ -733,6 +771,7 @@ p {
   .grid-3 { grid-template-columns: 1fr; }
   .grid-3 > * { border-right: none; border-bottom: 1px solid var(--border-color); padding: var(--space-md) 0; }
   .grid-4 { grid-template-columns: 1fr; }
+  .quick-paths { grid-template-columns: 1fr; }
 
   .nav-toggle { display: flex; }
   .nav__cta { display: none; }
