@@ -7,6 +7,12 @@
   <meta name="description" content="Magnrey helps businesses achieve [outcome] through [approach]. Placeholder value proposition — refine in issue #1.">
   <link rel="stylesheet" href="css/style.css">
   <style>
+    :root {
+      /* Semantic rating color, kept separate from the site's teal accent —
+         used only for the testimonial star ratings below. */
+      --rating-gold: #f5b942;
+    }
+
     /* Decorative background art for the dark hero panel — page-scoped
        to Home only, css/style.css intentionally left untouched. */
     .hero-panel-art {
@@ -20,6 +26,146 @@
     .hero__stats {
       position: relative;
       z-index: 1;
+    }
+
+    /* Founder's Quote — new, page-scoped. Reuses .section/.container
+       for placement; the card itself has no existing equivalent. */
+    .founder-quote {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 0 1px rgba(15, 118, 110, 0.12), var(--shadow-sm);
+      overflow: hidden;
+    }
+    .founder-quote__mark {
+      position: absolute;
+      top: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: 14rem;
+      line-height: 1;
+      color: var(--accent-color);
+      opacity: 0.07;
+      pointer-events: none;
+      user-select: none;
+    }
+    .founder-quote__text {
+      position: relative;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: var(--fw-display);
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: var(--primary-color);
+      margin: 0 0 var(--space-md);
+    }
+    .founder-quote__name {
+      position: relative;
+      font-weight: var(--fw-bold);
+      color: var(--primary-color);
+      margin: 0;
+    }
+    .founder-quote__title {
+      position: relative;
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin: 0.2em 0 0;
+    }
+
+    /* Client Impact + Our Clients — shared marquee mechanic. New,
+       page-specific infrastructure: both usages live on this one page,
+       so unlike .quick-paths this stays page-scoped rather than moving
+       into css/style.css. */
+    .marquee {
+      overflow: hidden;
+      position: relative;
+      margin-top: var(--space-xl);
+    }
+    .marquee__track {
+      display: flex;
+      width: max-content;
+      gap: var(--space-md);
+      animation: marquee-scroll 26s linear infinite;
+    }
+    .marquee:hover .marquee__track {
+      animation-play-state: paused;
+    }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee__track {
+        animation: none;
+      }
+    }
+
+    .testimonial-card {
+      flex: 0 0 340px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-sm);
+    }
+    .testimonial-card__stars {
+      color: var(--rating-gold);
+      letter-spacing: 0.15em;
+      font-size: 1rem;
+      margin-bottom: var(--space-sm);
+    }
+    .testimonial-card__quote {
+      font-size: var(--fs-small);
+      color: var(--text-main);
+      margin: 0 0 var(--space-md);
+    }
+    .testimonial-card__name {
+      font-weight: var(--fw-bold);
+      color: var(--primary-color);
+      margin: 0;
+      font-size: var(--fs-small);
+    }
+    .testimonial-card__company {
+      color: var(--text-muted);
+      font-size: var(--fs-caption);
+      margin: 0.1em 0 0;
+    }
+
+    .our-clients__heading {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: var(--fs-small);
+      font-weight: var(--fw-bold);
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .our-clients__marquee {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .client-tile {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 72px;
+      padding: 0 var(--space-lg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-small);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      background: var(--bg-white);
+      filter: grayscale(1);
     }
   </style>
 </head>
@@ -75,6 +221,17 @@
 
     <section class="section section--divider">
       <div class="container">
+        <div class="founder-quote">
+          <span class="founder-quote__mark" aria-hidden="true">&#8220;</span>
+          <blockquote class="founder-quote__text">I founded Magnrey Consulting with the purpose of helping organisations to maximise the value from AI and Digital, to enhance employee experience, improve operating margins, re-imagine the delivery of People services, and to partner with the client in genuine collaboration to deliver outcomes.</blockquote>
+          <p class="founder-quote__name">Rinnieta Chrestien</p>
+          <p class="founder-quote__title">Founding Partner, Magnrey Consulting</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--divider">
+      <div class="container">
         <div class="grid-4">
           <div class="feature">
             <div class="feature__icon">
@@ -103,6 +260,77 @@
             </div>
             <h3 class="feature__title">End-to-End Expertise</h3>
             <p class="feature__desc">Capabilities across operating, process, system, data and compliance to support from strategy to implementation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--divider">
+      <div class="container">
+        <p class="eyebrow">Client Impact</p>
+        <h2>What our clients say</h2>
+        <p class="lede">Measuring our success through the transformative outcomes delivered for enterprise leaders.</p>
+
+        <div class="marquee">
+          <div class="marquee__track">
+            <article class="testimonial-card">
+              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="testimonial-card__quote">"Magnrey didn't just advise us on AI adoption — they sat beside our team through every stage of execution. The operating model they helped us build is one we could actually sustain internally, not a slide deck we outgrew in a quarter."</p>
+              <p class="testimonial-card__name">Chief People Officer</p>
+              <p class="testimonial-card__company">Global Enterprise Client</p>
+            </article>
+            <article class="testimonial-card">
+              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="testimonial-card__quote">"What stood out was the discipline. Every recommendation came with a measurable outcome attached. Six months in, we could point to exactly where the value had landed."</p>
+              <p class="testimonial-card__name">VP of HR Operations</p>
+              <p class="testimonial-card__company">Technology &amp; Services Leader</p>
+            </article>
+            <article class="testimonial-card">
+              <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="testimonial-card__quote">"Genuine collaboration, not a hand-off. Magnrey's team operated as an extension of ours, which made the technology and the people side of the transformation move together instead of competing for airtime."</p>
+              <p class="testimonial-card__name">Head of Digital Transformation</p>
+              <p class="testimonial-card__company">Enterprise Solutions</p>
+            </article>
+            <!-- duplicated for a seamless loop -->
+            <article class="testimonial-card" aria-hidden="true">
+              <div class="testimonial-card__stars">★★★★★</div>
+              <p class="testimonial-card__quote">"Magnrey didn't just advise us on AI adoption — they sat beside our team through every stage of execution. The operating model they helped us build is one we could actually sustain internally, not a slide deck we outgrew in a quarter."</p>
+              <p class="testimonial-card__name">Chief People Officer</p>
+              <p class="testimonial-card__company">Global Enterprise Client</p>
+            </article>
+            <article class="testimonial-card" aria-hidden="true">
+              <div class="testimonial-card__stars">★★★★★</div>
+              <p class="testimonial-card__quote">"What stood out was the discipline. Every recommendation came with a measurable outcome attached. Six months in, we could point to exactly where the value had landed."</p>
+              <p class="testimonial-card__name">VP of HR Operations</p>
+              <p class="testimonial-card__company">Technology &amp; Services Leader</p>
+            </article>
+            <article class="testimonial-card" aria-hidden="true">
+              <div class="testimonial-card__stars">★★★★★</div>
+              <p class="testimonial-card__quote">"Genuine collaboration, not a hand-off. Magnrey's team operated as an extension of ours, which made the technology and the people side of the transformation move together instead of competing for airtime."</p>
+              <p class="testimonial-card__name">Head of Digital Transformation</p>
+              <p class="testimonial-card__company">Enterprise Solutions</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--divider">
+      <div class="container">
+        <p class="our-clients__heading">OUR CLIENTS</p>
+        <div class="marquee our-clients__marquee">
+          <div class="marquee__track">
+            <div class="client-tile">Global Financial Services Firm</div>
+            <div class="client-tile">Multinational Retailer</div>
+            <div class="client-tile">Global Logistics Enterprise</div>
+            <div class="client-tile">Manufacturing Group</div>
+            <div class="client-tile">Professional Services Firm</div>
+            <!-- duplicated for a seamless loop -->
+            <div class="client-tile" aria-hidden="true">Global Financial Services Firm</div>
+            <div class="client-tile" aria-hidden="true">Multinational Retailer</div>
+            <div class="client-tile" aria-hidden="true">Global Logistics Enterprise</div>
+            <div class="client-tile" aria-hidden="true">Manufacturing Group</div>
+            <div class="client-tile" aria-hidden="true">Professional Services Firm</div>
           </div>
         </div>
       </div>
