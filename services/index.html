@@ -6,6 +6,38 @@
   <title>Magnrey — Services</title>
   <meta name="description" content="Three integrated disciplines behind every Magnrey engagement — why us, what we do, and how we deliver success.">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Page-scoped: css/style.css intentionally left untouched. .card/
+       .btn--ghost/.eyebrow/.lede are reused as-is; these rules only add
+       the summary-block layout, which has no existing equivalent. */
+    .svc-summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    .svc-summary__desc {
+      color: var(--text-main);
+    }
+    .svc-summary__list {
+      margin: var(--space-sm) 0;
+      padding-left: 1.2em;
+      color: var(--text-main);
+      font-size: var(--fs-small);
+      line-height: 1.7;
+    }
+    .svc-summary__list li {
+      margin-bottom: 0.4em;
+    }
+    .svc-summary__list li strong {
+      color: var(--primary-color);
+    }
+    .svc-summary__teaser {
+      color: var(--text-muted);
+      font-size: var(--fs-small);
+      margin: var(--space-sm) 0 var(--space-sm);
+    }
+  </style>
 </head>
 <body data-page="services">
   <div id="site-header"></div>
@@ -34,22 +66,44 @@
     <section class="section section--divider">
       <div class="container">
         <p class="eyebrow">Explore</p>
-        <h2>How we work</h2>
-        <div class="grid-3">
-          <div>
-            <p class="list-item__index">01</p>
-            <h3 class="list-item__title"><a href="why-us/">Why Us</a></h3>
-            <p class="list-item__desc">What sets Magnrey apart, and the track record behind the claim.</p>
+        <h2>Bridging the Gap Between Artificial Intelligence Innovation and Human Resources Execution</h2>
+        <p class="lede">Elevating the People Function from a legacy administrative cost centre into an AI-native engine of enterprise value.</p>
+
+        <div class="svc-summary-list">
+          <div class="card svc-summary">
+            <p class="eyebrow">Strategic Justification</p>
+            <h3>Why Magnrey</h3>
+            <p class="svc-summary__desc">Magnrey was established to reconcile the disconnect between capital investments in artificial intelligence and tangible operational performance. By synthesizing AI-first organizational transformation, disciplined execution frameworks, and extensive executive leadership expertise, Magnrey yields quantifiable business outcomes — ranging from enhanced employee experiences to embedded regulatory compliance.</p>
+            <p class="svc-summary__teaser">Examine the organizational vision, strategic pillars, and targeted performance outcomes:</p>
+            <a href="why-us/" class="btn btn--ghost">Explore The Strategic Case →</a>
           </div>
-          <div>
-            <p class="list-item__index">02</p>
-            <h3 class="list-item__title"><a href="what-we-do/">What We Do</a></h3>
-            <p class="list-item__desc">Three integrated capabilities, from AI strategy to systems implementation.</p>
+
+          <div class="card svc-summary">
+            <p class="eyebrow">Organizational Capabilities</p>
+            <h3>Core Service Pillars</h3>
+            <p class="svc-summary__desc">Magnrey delivers three deeply integrated core competencies engineered to translate AI-native vision into scalable operational reality across complex enterprise landscapes:</p>
+            <ul class="svc-summary__list">
+              <li><strong>AI &amp; Digital Advisory</strong> — Formulate future-ready technology strategies, optimize ecosystem platform stacks, and accelerate quantifiable return on AI investments while mitigating deployment risks.</li>
+              <li><strong>Project Advisory</strong> — Engineer target operating models, streamline cross-functional workflows, and govern high-complexity digital transformation initiatives with rigorous portfolio oversight.</li>
+              <li><strong>Systems Implementation</strong> — Execute seamless, end-to-end deployments and data integrations across leading enterprise HR platforms — including Workday, Dayforce, Rippling, and Deel — to establish a robust digital core.</li>
+            </ul>
+            <p class="svc-summary__teaser">Analyze how these integrated capabilities modernize enterprise digital infrastructure:</p>
+            <a href="what-we-do/" class="btn btn--ghost">View Core Service Pillars →</a>
           </div>
-          <div>
-            <p class="list-item__index">03</p>
-            <h3 class="list-item__title"><a href="how-we-deliver-success/">How We Deliver Success</a></h3>
-            <p class="list-item__desc">The Immersion-to-Evolve framework — five phases, one accountable team.</p>
+
+          <div class="card svc-summary">
+            <p class="eyebrow">Operational Methodology</p>
+            <h3>The Immersion-to-Evolve Framework</h3>
+            <p class="svc-summary__desc">The firm's collaborative engagement model emphasizes joint design and co-delivery alongside executive leadership and operational practitioner teams. Rather than delivering solutions in isolation, Magnrey facilitates an end-to-end transformation journey — spanning initial strategic alignment, rigorous execution, and ongoing, quantifiable value realization across five structured phases:</p>
+            <ul class="svc-summary__list">
+              <li><strong>The Immersion</strong> — Strategic Alignment &amp; Risk Assessment</li>
+              <li><strong>The Blueprint</strong> — Operating Model Engineering</li>
+              <li><strong>The Sequence</strong> — Roadmap &amp; Capability Architecture Strategy</li>
+              <li><strong>The Build &amp; Deploy</strong> — Disciplined Execution &amp; Organizational Readiness</li>
+              <li><strong>The Evolve &amp; Pulse</strong> — Value Realization &amp; Performance Optimization</li>
+            </ul>
+            <p class="svc-summary__teaser">Review the comprehensive five-stage delivery framework:</p>
+            <a href="how-we-deliver-success/" class="btn btn--ghost">Explore Our Delivery Framework →</a>
           </div>
         </div>
       </div>
