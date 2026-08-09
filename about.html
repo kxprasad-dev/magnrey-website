@@ -6,23 +6,273 @@
   <title>Magnrey — About Us</title>
   <meta name="description" content="Magnrey's team background, core values, and industry authority.">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Page-scoped: css/style.css intentionally left untouched. .hero/
+       .eyebrow/.grid-4/.feature/.card/tokens are reused as-is (same
+       components Home and Services use); these rules only add what has
+       no existing equivalent — the hero panel's pull-quote treatment, and
+       a team profile card, since no bio/avatar pattern exists anywhere on
+       the site yet. */
+    .hero__quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: var(--fs-h2);
+      line-height: 1.5;
+      color: var(--bg-white);
+      border-left: 3px solid var(--accent-light);
+      padding-left: var(--space-md);
+      max-width: 30ch;
+      margin: 0;
+    }
+    .hero__quote cite {
+      display: block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-size: var(--fs-small);
+      font-weight: var(--fw-bold);
+      color: var(--accent-light);
+    }
+
+    .team-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .team-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .team-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+    }
+    .team-card__avatar {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--primary-color);
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: var(--fw-bold);
+    }
+    .team-card__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .team-card__identity {
+      flex: 1;
+      min-width: 220px;
+    }
+    .team-card__name {
+      font-family: var(--font-display);
+      font-size: var(--fs-h2);
+      font-weight: var(--fw-bold);
+      color: var(--primary-color);
+      margin: 0 0 0.2em;
+    }
+    .team-card__role {
+      color: var(--accent-color);
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-small);
+      margin: 0 0 var(--space-sm);
+    }
+    .team-card__linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+      color: var(--accent-color);
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-small);
+      text-decoration: none;
+    }
+    .team-card__linkedin:hover {
+      text-decoration: underline;
+    }
+    .team-card__summary p {
+      color: var(--text-main);
+      margin: 0 0 var(--space-sm);
+    }
+    .team-card__summary p:last-child {
+      margin-bottom: 0;
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md) var(--space-lg);
+      margin-top: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-color);
+    }
+    .expertise-group__title {
+      font-size: var(--fs-small);
+      font-weight: var(--fw-bold);
+      color: var(--primary-color);
+      margin: 0 0 var(--space-xs);
+    }
+    .expertise-group ul {
+      margin: 0;
+      padding-left: 1.1em;
+      color: var(--text-main);
+      font-size: var(--fs-small);
+      line-height: 1.6;
+    }
+    .expertise-group li {
+      margin-bottom: 0.3em;
+    }
+    .expertise-group li:last-child {
+      margin-bottom: 0;
+    }
+    .expertise-group li strong {
+      color: var(--primary-color);
+    }
+
+    .team-card__credentials {
+      margin-top: var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: var(--fs-small);
+    }
+
+    @media (max-width: 768px) {
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+      .team-card__header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body data-page="about">
   <div id="site-header"></div>
 
   <main>
-    <section class="section">
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">About Us</p>
+        <h1>Practitioners<br><em>Not Career Consultants.</em></h1>
+        <p class="lede">We have stood in your shoes. We bring the battle-tested insight required to move beyond theoretical strategy into sustainable, operational reality.</p>
+        <div class="hero__actions">
+          <a href="services/" class="btn btn--ghost">Explore Services</a>
+          <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+        </div>
+      </div>
+      <div class="hero__panel">
+        <blockquote class="hero__quote">
+          At Magnrey Consulting, we bridge high-level strategy and operational execution. We empower organisations to navigate complex business landscapes by delivering precise, pragmatic, and measurable growth strategies rooted in transparency and long-term partnership.
+          <cite>— Magnrey Consulting</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section section--divider">
       <div class="container">
-        <p class="eyebrow">Scaffold — tracked in <a href="https://github.com/kxprasad-dev/magnrey-website/issues/4">#4</a></p>
-        <h1>About Us</h1>
-        <p class="lede">This page is scaffolded and ready to be built out. It should cover:</p>
-        <div class="card">
-          <div class="card__accent"></div>
-          <ul>
-            <li>Team background</li>
-            <li>Core values</li>
-            <li>Industry authority / credentials</li>
-          </ul>
+        <p class="eyebrow">Core Value Pillars</p>
+        <h2>What we hold ourselves to</h2>
+        <div class="grid-4">
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r="0.6" fill="currentColor" stroke="none"></circle></svg>
+            </div>
+            <h3 class="feature__title">Strategic Precision &amp; Actionable Insight</h3>
+            <p class="feature__desc">Strategy without execution is just theory. Every solution is grounded in data-backed analysis and designed for real-world implementation — delivering measurable, quantifiable ROI rather than abstract advice.</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </div>
+            <h3 class="feature__title">Integrity &amp; Transparent Advisory</h3>
+            <p class="feature__desc">Unbiased, honest guidance built on total clarity. Magnrey operates as an objective advisor focused entirely on the client's best interest, fostering deep trust, long-term alignment, and direct, candid communication.</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.6v.7h6.4v-.7c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2z"></path></svg>
+            </div>
+            <h3 class="feature__title">Pragmatic &amp; Future-Proof Innovation</h3>
+            <p class="feature__desc">Adaptability tailored to each business environment — embracing modern tools and methodologies without losing sight of fundamental business mechanics — to equip organisations with sustainable, scalable solutions built to endure market shifts.</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"></circle><circle cx="15" cy="12" r="6"></circle></svg>
+            </div>
+            <h3 class="feature__title">Collaborative Ownership &amp; Partnership</h3>
+            <p class="feature__desc">Working alongside client teams as an embedded partner rather than an external observer, ensuring seamless knowledge transfer, team alignment, and internal capability building beyond project completion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--divider">
+      <div class="container">
+        <p class="eyebrow">Leadership</p>
+        <h2>The people behind Magnrey</h2>
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-card__header">
+              <div class="team-card__avatar" aria-hidden="true">RC</div>
+              <div class="team-card__identity">
+                <h3 class="team-card__name">Rinnieta Chrestien</h3>
+                <p class="team-card__role">Partner &amp; Co-Founder, Magnrey Consulting</p>
+                <a href="https://www.linkedin.com/in/rinnieta-chrestien/" class="team-card__linkedin" target="_blank" rel="noopener noreferrer">View LinkedIn Profile &#8599;</a>
+              </div>
+            </div>
+            <div class="team-card__summary">
+              <p>Rinnieta Chrestien is an experienced executive HR leader and strategic advisor specialising in AI-driven HR transformation, operating model design, and global service delivery for enterprise-scale organisations (75K+ users).</p>
+              <p>With nearly two decades of leadership scaling HR functions at top global tech companies, Rinnieta brings a deep track record of aligning people strategy with cutting-edge technology. Most recently, she served as Vice President of Human Resources at Salesforce, where she spent 9 years leading global teams across 10 countries and driving end-to-end operational execution across JAPAC, the Americas, and Europe. Prior to Salesforce, she was General Manager of Recruitment &amp; HR Operations at Fujitsu Australia &amp; New Zealand.</p>
+              <p>At Magnrey Consulting, Rinnieta partners with C-suite and HR executive leaders to design future-ready workforce strategies, implement agentic AI and HCM technologies, and lead complex organisational transformations from strategy through execution.</p>
+            </div>
+            <div class="expertise-grid">
+              <div class="expertise-group">
+                <p class="expertise-group__title">AI &amp; HR Digital Transformation</p>
+                <ul>
+                  <li><strong>Agentic &amp; Generative AI Integration:</strong> implementing AI agents, automated agentic workflows, and workforce augmentation strategies to redesign modern work.</li>
+                  <li><strong>HCM Technology Platforms:</strong> strategy, execution, and optimisation across enterprise HR platforms, including Workday, Salesforce Service Cloud, and agentic platforms.</li>
+                  <li><strong>HR Products &amp; Experience:</strong> enhancing employee experience through human-centred, AI-empowered digital solutions.</li>
+                </ul>
+              </div>
+              <div class="expertise-group">
+                <p class="expertise-group__title">Operating Model Strategy &amp; Global Service Delivery</p>
+                <ul>
+                  <li><strong>HR Operating Model Design:</strong> transforming HR functions, establishing scalable HR operating models, and optimising global capability centers (GCCs).</li>
+                  <li><strong>Global Operations at Scale:</strong> operationalising and localising enterprise HR policies across diverse international jurisdictions (27+ countries).</li>
+                  <li><strong>Workforce &amp; Location Strategy:</strong> strategic workforce planning, skill-mapping, and global location strategies for high-growth tech enterprises.</li>
+                </ul>
+              </div>
+              <div class="expertise-group">
+                <p class="expertise-group__title">Data Strategy, Governance &amp; Compliance</p>
+                <ul>
+                  <li><strong>HR Analytics &amp; Governance:</strong> establishing data strategies, advanced HR analytics, and robust governance models.</li>
+                  <li><strong>Global Regulatory Compliance:</strong> managing cross-border compliance, risk, and audit frameworks across SOX, GDPR, security, and statutory requirements.</li>
+                </ul>
+              </div>
+              <div class="expertise-group">
+                <p class="expertise-group__title">Executive Leadership &amp; Change Management</p>
+                <ul>
+                  <li><strong>C-Suite Advisory &amp; Stakeholder Engagement:</strong> trusted advisor to executive teams on organisational design, M&amp;A integration, and leadership capability.</li>
+                  <li><strong>Large-Scale Change Management:</strong> guiding organisations through cultural transformation, shift-to-agentic mindsets, and complex change.</li>
+                  <li><strong>Global Team Leadership:</strong> championing high-performing, cross-cultural teams and fostering diverse, inclusive workforces.</li>
+                </ul>
+              </div>
+            </div>
+            <p class="team-card__credentials">M.Sc. in Human Resources — The London School of Economics and Political Science (LSE)</p>
+          </article>
         </div>
       </div>
     </section>
