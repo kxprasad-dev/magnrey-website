@@ -8,9 +8,8 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* Page-scoped: css/style.css intentionally left untouched. .hero/
-       .card/.btn/.bg-dark/tokens are reused as-is; these rules only add
-       what has no existing equivalent — the subscribe box (reused in both
-       the hero panel and the mid-page banner), the featured-insight
+       .card/.btn/tokens are reused as-is; these rules only add what has no
+       existing equivalent — the hero subscribe box, the featured-insight
        callout, the category filter tabs, and the insight card grid. */
     .subscribe-box {
       max-width: 360px;
@@ -52,31 +51,6 @@
       color: var(--text-muted);
       margin: var(--space-xs) 0 0;
     }
-    .subscribe-box--banner {
-      max-width: 480px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .subscribe-box--banner .subscribe-box__title {
-      color: var(--bg-white);
-    }
-    .subscribe-box--banner .subscribe-box__desc {
-      color: rgba(255, 255, 255, 0.7);
-    }
-    .subscribe-box--banner .subscribe-box__form .btn {
-      flex: 1 1 auto;
-    }
-    .subscribe-box--banner .subscribe-box__note {
-      color: rgba(255, 255, 255, 0.55);
-    }
-    /* .btn:disabled's background matches .bg-dark exactly (both
-       var(--primary-color)), so on this dark banner the button would
-       otherwise vanish into its own backdrop. */
-    .subscribe-box--banner .btn:disabled {
-      background: rgba(255, 255, 255, 0.15);
-      color: rgba(255, 255, 255, 0.85);
-    }
-
     .tag-badge {
       display: inline-block;
       font-size: var(--fs-caption);
@@ -214,8 +188,12 @@
     <section class="hero">
       <div class="hero__copy">
         <p class="eyebrow">Insights</p>
-        <h1>Strategic Perspectives</h1>
-        <p class="lede">Practical and Actionable</p>
+        <h1>Perspectives.<br><em>Practical and Actionable.</em></h1>
+        <p class="lede">Real stories and actionable playbooks from leaders who have been in the trenches. No trend-chasing buzzwords, just what actually works when execution matters.</p>
+        <div class="hero__actions">
+          <a href="services/" class="btn btn--ghost">Explore Services</a>
+          <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+        </div>
       </div>
       <div class="hero__panel">
         <div class="card subscribe-box">
@@ -315,21 +293,6 @@
               <span>6 min read</span>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section bg-dark">
-      <div class="container">
-        <div class="subscribe-box subscribe-box--banner">
-          <p class="subscribe-box__title">Stay Ahead of Industry Shifts</p>
-          <p class="subscribe-box__desc">Join enterprise leaders who rely on Magnrey's analytical commentary. No spam, just high-value strategic takeaways published monthly.</p>
-          <!-- HubSpot: swap this form for the embed (Portal ID + Form GUID) once available -->
-          <form class="subscribe-box__form" onsubmit="return false;">
-            <input type="email" placeholder="Enter email address" aria-label="Email address">
-            <button type="submit" class="btn btn--primary" disabled>Get Automatic Updates — connecting soon</button>
-          </form>
-          <p class="subscribe-box__note">Unsubscribe at any time. We respect your privacy.</p>
         </div>
       </div>
     </section>
