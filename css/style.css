@@ -359,27 +359,6 @@ p {
   transform: translateY(0);
 }
 
-.nav__mobile-cta-item {
-  display: none;
-}
-
-.nav__cta {
-  color: var(--bg-white) !important;
-  background: var(--primary-color);
-  padding: 0.55rem 1.1rem;
-  border-radius: var(--radius-sm);
-  font-size: var(--fs-small);
-  font-weight: var(--fw-bold);
-  box-shadow: var(--shadow-sm);
-  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-}
-
-.nav__cta:hover {
-  background: #1e293b;
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
-}
-
 /* ==========================================================================
    Hero — asymmetric two-column pattern
    ========================================================================== */
@@ -754,11 +733,11 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .nav__cta, .feature, .feature__icon,
+  .btn, .feature, .feature__icon,
   .nav-toggle span, .nav__dropdown-toggle, .nav__dropdown-menu, .nav__links {
     transition: none;
   }
-  .btn--primary:hover, .btn--accent:hover, .nav__cta:hover, .feature:hover {
+  .btn--primary:hover, .btn--accent:hover, .feature:hover {
     transform: none;
   }
   .pulse-dot, .pulse-dot::before, .pulse-dot::after {
@@ -774,7 +753,6 @@ p {
   .quick-paths { grid-template-columns: 1fr; }
 
   .nav-toggle { display: flex; }
-  .nav__cta { display: none; }
 
   .nav__links {
     position: absolute;
@@ -848,18 +826,4 @@ p {
     border-bottom: 1px solid var(--border-color);
   }
 
-  .nav__mobile-cta-item {
-    display: block;
-    padding: var(--space-md) var(--space-lg);
-  }
-
-  .nav__mobile-cta {
-    display: block;
-    color: var(--bg-white) !important;
-    background: var(--primary-color);
-    padding: 0.7rem 1.4rem;
-    border-radius: var(--radius-sm);
-    font-weight: var(--fw-bold);
-    text-align: center;
-  }
 }
