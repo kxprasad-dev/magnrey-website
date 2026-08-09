@@ -8,35 +8,36 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* Page-scoped: css/style.css intentionally left untouched. .hero/
-       .card/tokens are reused as-is; this rule only adds the
-       "Reach Us Directly" card in the hero panel — the shared stylesheet
-       has no equivalent. The diagnostic form is a HubSpot embed, styled
-       by HubSpot's own form settings. */
+       tokens are reused as-is; these rules style "Reach Us Directly"
+       directly on the hero panel's dark background, matching the
+       hero__quote treatment on the About Us page (no card, no equivalent
+       in the shared stylesheet). The diagnostic form is a HubSpot embed,
+       styled by HubSpot's own form settings. */
     .reach-us {
-      max-width: 320px;
-      text-align: left;
+      border-left: 3px solid var(--accent-light);
+      padding-left: var(--space-md);
+      max-width: 30ch;
     }
     .reach-us__title {
       font-family: var(--font-display);
-      font-size: var(--fs-h3);
-      font-weight: var(--fw-bold);
-      color: var(--primary-color);
-      margin: 0 0 var(--space-sm);
+      font-style: italic;
+      font-size: var(--fs-h2);
+      line-height: 1.5;
+      color: var(--bg-white);
+      margin: 0;
     }
     .reach-us__email {
-      display: inline-block;
-      color: var(--accent-color);
+      display: block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-size: var(--fs-small);
       font-weight: var(--fw-bold);
+      color: var(--accent-light);
       text-decoration: none;
     }
     .reach-us__email:hover {
       text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      .reach-us {
-        max-width: none;
-      }
     }
   </style>
 </head>
@@ -51,7 +52,7 @@
         <p class="lede">Speak with experienced practitioners who understand your challenges. Bounce some ideas or have an open conversation on how we can help.</p>
       </div>
       <div class="hero__panel">
-        <div class="card reach-us">
+        <div class="reach-us">
           <p class="reach-us__title">Reach Us Directly</p>
           <a href="mailto:assist@magnrey.com" class="reach-us__email">assist@magnrey.com</a>
         </div>
