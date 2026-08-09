@@ -8,102 +8,36 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* Page-scoped: css/style.css intentionally left untouched. .hero/
-       .card/.btn/tokens are reused as-is; these rules only add what has
-       no existing equivalent — the "Reach Us Directly" card in the hero
-       panel, and the diagnostic request form (the shared stylesheet has
-       no form-control styling beyond a font-family reset). */
+       tokens are reused as-is; these rules style "Reach Us Directly"
+       directly on the hero panel's dark background, matching the
+       hero__quote treatment on the About Us page (no card, no equivalent
+       in the shared stylesheet). The diagnostic form is a HubSpot embed,
+       styled by HubSpot's own form settings. */
     .reach-us {
-      max-width: 320px;
-      text-align: left;
+      border-left: 3px solid var(--accent-light);
+      padding-left: var(--space-md);
+      max-width: 30ch;
     }
     .reach-us__title {
       font-family: var(--font-display);
-      font-size: var(--fs-h3);
-      font-weight: var(--fw-bold);
-      color: var(--primary-color);
-      margin: 0 0 var(--space-sm);
+      font-style: italic;
+      font-size: var(--fs-h2);
+      line-height: 1.5;
+      color: var(--bg-white);
+      margin: 0;
     }
     .reach-us__email {
-      display: inline-block;
-      color: var(--accent-color);
+      display: block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-size: var(--fs-small);
       font-weight: var(--fw-bold);
+      color: var(--accent-light);
       text-decoration: none;
     }
     .reach-us__email:hover {
       text-decoration: underline;
-    }
-
-    .diagnostic-form label {
-      display: block;
-      font-size: var(--fs-small);
-      font-weight: var(--fw-bold);
-      color: var(--primary-color);
-      margin-bottom: var(--space-xs);
-    }
-    .diagnostic-form .field {
-      margin-bottom: var(--space-md);
-    }
-    .diagnostic-form input[type="text"],
-    .diagnostic-form input[type="email"],
-    .diagnostic-form select,
-    .diagnostic-form textarea {
-      width: 100%;
-      padding: 0.7em 0.9em;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-primary);
-      font-size: var(--fs-small);
-      color: var(--text-main);
-    }
-    .diagnostic-form textarea {
-      resize: vertical;
-    }
-    .form-row {
-      display: flex;
-      gap: var(--space-md);
-    }
-    .form-row .field {
-      flex: 1;
-    }
-    .diagnostic-form .field__hint {
-      font-size: var(--fs-caption);
-      color: var(--text-muted);
-      margin-top: var(--space-xs);
-    }
-
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-    }
-    .diagnostic-form .radio-option {
-      display: flex;
-      align-items: baseline;
-      gap: var(--space-xs);
-      font-size: var(--fs-small);
-      color: var(--text-main);
-      font-weight: var(--fw-regular);
-      cursor: pointer;
-    }
-    .radio-option input {
-      margin: 0;
-      flex-shrink: 0;
-    }
-
-    .diagnostic-form__note {
-      font-size: var(--fs-caption);
-      color: var(--text-muted);
-      margin-top: var(--space-sm);
-    }
-
-    @media (max-width: 768px) {
-      .form-row {
-        flex-direction: column;
-        gap: 0;
-      }
-      .reach-us {
-        max-width: none;
-      }
     }
   </style>
 </head>
@@ -118,7 +52,7 @@
         <p class="lede">Speak with experienced practitioners who understand your challenges. Bounce some ideas or have an open conversation on how we can help.</p>
       </div>
       <div class="hero__panel">
-        <div class="card reach-us">
+        <div class="reach-us">
           <p class="reach-us__title">Reach Us Directly</p>
           <a href="mailto:assist@magnrey.com" class="reach-us__email">assist@magnrey.com</a>
         </div>
@@ -131,62 +65,21 @@
         <h2>Request Your 45-Minute Diagnostic Session</h2>
         <p class="lede">No obligation. No junior handoffs. You speak directly with a senior practitioner from day one.</p>
 
-        <form class="card diagnostic-form" onsubmit="return false;">
+        <div class="card diagnostic-form">
           <div class="card__accent"></div>
-
-          <div class="field">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-          </div>
-
-          <div class="field">
-            <label for="email">Work Email</label>
-            <input type="email" id="email" name="email" placeholder="you@company.com" required>
-          </div>
-
-          <div class="form-row">
-            <div class="field">
-              <label for="company">Company Name</label>
-              <input type="text" id="company" name="company" placeholder="Your company">
-            </div>
-            <div class="field">
-              <label for="company-size">Company Size</label>
-              <select id="company-size" name="company-size">
-                <option value="" selected>Select a range</option>
-                <option>Under 1,000 employees</option>
-                <option>1,000–5,000 employees</option>
-                <option>5,000–25,000 employees</option>
-                <option>25,000–75,000 employees</option>
-                <option>75,000+ employees</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="role">Job Title / Role</label>
-            <input type="text" id="role" name="role" placeholder="e.g., CHRO, VP of HR, Chief Digital Officer">
-          </div>
-
-          <div class="field">
-            <label>Primary Focus / Area of Interest</label>
-            <div class="radio-group">
-              <label class="radio-option"><input type="radio" name="focus" value="ai-digital-advisory">AI &amp; Digital Advisory</label>
-              <label class="radio-option"><input type="radio" name="focus" value="operating-model">Operating Model Engineering / Target Operating Model</label>
-              <label class="radio-option"><input type="radio" name="focus" value="hr-systems">HR Systems Implementation (Workday, Dayforce, Salesforce)</label>
-              <label class="radio-option"><input type="radio" name="focus" value="hr-data">HR Data Strategy &amp; Compliance</label>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="message">Brief Message / Business Context</label>
-            <textarea id="message" name="message" rows="4" placeholder="Outline your current challenges or transformation goals (optional)"></textarea>
-            <p class="field__hint">Optional — helps us tailor the conversation before we speak.</p>
-          </div>
-
-          <!-- HubSpot: swap this form for the embed (Portal ID + Form GUID) once available -->
-          <button type="submit" class="btn btn--primary" disabled>Request Diagnostic Session — connecting soon</button>
-          <p class="diagnostic-form__note">Form submission is being connected — check back soon, or email us directly above.</p>
-        </form>
+          <div id="hubspot-diagnostic-form"></div>
+          <script charset="utf-8" type="text/javascript" src="//js-ap1.hsforms.net/forms/embed/v2.js"></script>
+          <script>
+            if (window.hbspt) {
+              hbspt.forms.create({
+                portalId: "442865145",
+                formId: "e1ce139a-c494-4871-a4f3-c4a98dc427aa",
+                region: "ap1",
+                target: "#hubspot-diagnostic-form"
+              });
+            }
+          </script>
+        </div>
       </div>
     </section>
   </main>
