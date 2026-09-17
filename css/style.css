@@ -62,7 +62,7 @@
   --transition: 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Reset & base
    ========================================================================== */
 
@@ -117,7 +117,7 @@ img {
   display: block;
 }
 
-/* ==========================================================================
+/* ============================================================================
    Typography — only these rules should ever set font-size or font-weight.
    Everything else in this file reuses the classes/tags below rather than
    declaring its own size, so the whole site stays on one consistent scale.
@@ -209,7 +209,7 @@ p {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Layout containers
    ========================================================================== */
 
@@ -220,64 +220,32 @@ p {
 }
 
 .section {
-  padding: clamp(3.5rem, 6vw, 5rem) 0;
+  padding: var(--space-xl) 0;
 }
 
 .section--divider {
   border-top: 1px solid var(--border-color);
 }
 
-.section .eyebrow,
-.section .our-clients__heading {
-  margin-bottom: var(--space-sm);
-}
-
-/* ==========================================================================
+/* ============================================================================
    Navigation
    ========================================================================== */
 
 .nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
-  padding: 0.9rem var(--space-lg);
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--bg-white);
   box-shadow: 0 1px 0 var(--border-color), var(--shadow-sm);
 }
 
 .nav__brand {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 2vw, 2.2rem);
+  font-size: var(--fs-h2);
   font-weight: var(--fw-display);
   color: var(--primary-color);
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-.nav__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.1rem;
-  border-radius: 999px;
-  background: var(--primary-color);
-  color: var(--bg-white);
-  font-size: var(--fs-small);
-  font-weight: var(--fw-bold);
-  box-shadow: var(--shadow-sm);
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-}
-
-.nav__cta:hover {
-  background: #1e293b;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
 }
 
 .nav-toggle {
@@ -312,21 +280,12 @@ p {
   list-style: none;
   margin: 0;
   padding: 0;
-  flex: 1;
-  justify-content: center;
 }
 
 .nav__links a {
   font-size: var(--fs-small);
   font-weight: var(--fw-regular);
   color: var(--text-main);
-  letter-spacing: 0.01em;
-  transition: color var(--transition);
-}
-
-.nav__links a:hover,
-.nav__links a:focus-visible {
-  color: var(--accent-color);
 }
 
 .nav__item--dropdown {
@@ -400,21 +359,18 @@ p {
   transform: translateY(0);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Hero — asymmetric two-column pattern
    ========================================================================== */
 
 .hero {
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: stretch;
 }
 
 .hero__copy {
-  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  padding: var(--space-xl) var(--space-lg);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -422,18 +378,16 @@ p {
 
 .hero__copy h1 {
   margin-bottom: var(--space-sm);
-  max-width: 12ch;
 }
 
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--space-sm);
   margin-top: var(--space-md);
 }
 
 .hero__panel {
-  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  background: var(--primary-color);
   color: var(--bg-white);
   padding: var(--space-lg);
   display: flex;
@@ -442,13 +396,6 @@ p {
   align-items: center;
   text-align: center;
   position: relative;
-  min-height: 420px;
-  border-radius: 1.5rem 0 0 1.5rem;
-  overflow: hidden;
-}
-
-.hero-panel-art {
-  opacity: 0.05;
 }
 
 .hero__stats {
@@ -472,12 +419,11 @@ p {
   color: var(--text-muted);
   font-size: var(--fs-small);
   font-weight: var(--fw-regular);
-  max-width: 24ch;
+  max-width: 22ch;
   margin-top: var(--space-xs);
-  letter-spacing: 0.01em;
 }
 
-/* ==========================================================================
+/* ============================================================================
    Buttons
    ========================================================================== */
 
@@ -545,51 +491,7 @@ p {
   background: var(--primary-color);
 }
 
-/* ==========================================================================
-   Trust strip
-   ========================================================================== */
-
-.trust-strip {
-  padding-top: 0;
-}
-
-.trust-strip__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-md);
-  background: var(--bg-white);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  padding: var(--space-md);
-}
-
-.trust-item {
-  padding: var(--space-sm);
-  text-align: center;
-}
-
-.trust-item + .trust-item {
-  border-left: 1px solid var(--border-color);
-}
-
-.trust-item__value {
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4vw, 3rem);
-  line-height: 1;
-  color: var(--primary-color);
-  margin: 0 0 var(--space-xs);
-}
-
-.trust-item__label {
-  font-size: var(--fs-small);
-  color: var(--text-main);
-  margin: 0;
-  max-width: 24ch;
-  margin-inline: auto;
-}
-
-/* ==========================================================================
+/* ============================================================================
    Cards / numbered list pattern
    ========================================================================== */
 
@@ -632,7 +534,7 @@ p {
   color: var(--text-main);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Quick Path — cross-page navigation footer, unnumbered. Distinct from
    .grid-3/.list-item__* above (which services/index.html's own numbered
    subpage list still uses): this uses gap-based spacing instead of
@@ -642,23 +544,8 @@ p {
 
 .quick-paths {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-md);
-}
-
-.quick-paths > div {
-  background: var(--bg-white);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: var(--space-md);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-}
-
-.quick-paths > div:hover {
-  border-color: rgba(15, 118, 110, 0.22);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-lg) var(--space-md);
 }
 
 .quick-path__title {
@@ -683,7 +570,6 @@ p {
   font-weight: var(--fw-regular);
   color: var(--text-main);
   margin: 0;
-  line-height: 1.6;
 }
 
 .card {
@@ -701,7 +587,7 @@ p {
   margin-bottom: var(--space-sm);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Feature callouts — horizontal icon + title + description row
    ========================================================================== */
 
@@ -764,7 +650,7 @@ p {
   color: var(--text-main);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Pull quote / callout
    ========================================================================== */
 
@@ -778,68 +664,22 @@ p {
   color: var(--primary-color);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Footer
    ========================================================================== */
 
 .footer {
   background: var(--primary-color);
   color: var(--text-muted);
-  padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-md);
   font-size: var(--fs-caption);
   font-weight: var(--fw-regular);
 }
 
-.footer__brand {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.footer__wordmark {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  color: var(--bg-white);
-  line-height: 1;
-}
-
-.footer__brand p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--fs-caption);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.footer__meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-muted);
-}
-
-.footer__meta a {
-  color: var(--bg-white);
-  opacity: 0.9;
-  transition: opacity var(--transition), color var(--transition);
-}
-
-.footer__meta a:hover {
-  opacity: 1;
-  color: var(--accent-light);
-}
-
-.footer__divider {
-  color: rgba(255, 255, 255, 0.35);
-}
-
-/* ==========================================================================
+/* ============================================================================
    Document / memo pattern (for HTML-to-PDF or web-based memos)
    ========================================================================== */
 
@@ -873,7 +713,7 @@ p {
   margin-top: var(--space-lg);
 }
 
-/* ==========================================================================
+/* ============================================================================
    Utilities
    ========================================================================== */
 
@@ -883,7 +723,7 @@ p {
 .bg-white      { background: var(--bg-white); }
 .mt-lg         { margin-top: var(--space-lg); }
 
-/* ==========================================================================
+/* ============================================================================
    Accessibility
    ========================================================================== */
 
